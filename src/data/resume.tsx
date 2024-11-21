@@ -79,7 +79,7 @@ export const DATA = {
       start: "April 2022",
       end: "present",
       description:
-        "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
+        "A freelance developer who has worked with clients from all over the world. I have worked on a variety of projects ranging from web development to embedded systems and also have experience in IoT.",
     },
   ],
   education: [
@@ -95,7 +95,7 @@ export const DATA = {
       school: "Govt. Polytechnic College",
       href: "https://gpt.karnataka.gov.in/gptharihara/public/en",
       degree: "Diploma in Electronics and Communication Engineering", 
-      logoUrl: "https://gpt.karnataka.gov.in/gptharihara/public/uploads/dept_logo1649766978.jpg",
+      logoUrl: "/gpt.png",
       start: "2020",
       end: "2023",
     },
@@ -107,7 +107,7 @@ export const DATA = {
       dates: "",
       active: true,
       description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+        "A React based application chatting application using the firebase as ",
       technologies: [
         "Next.js",
         "Firesbase",
@@ -131,9 +131,9 @@ export const DATA = {
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
     },
     {
-      title: "Magic UI",
+      title: "AskFlow",
       href: "https://magicui.design",
-      dates: "June 2023 - Present",
+      dates: "",
       active: true,
       description:
         "Designed, developed and sold animated UI components for developers.",
@@ -163,9 +163,9 @@ export const DATA = {
       video: "https://cdn.magicui.design/bento-grid.mp4",
     },
     {
-      title: "llm.report",
+      title: "RFID based Smart Attendance System",
       href: "https://llm.report",
-      dates: "April 2023 - September 2023",
+      dates: "",
       active: true,
       description:
         "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
@@ -196,9 +196,9 @@ export const DATA = {
       video: "https://cdn.llm.report/openai-demo.mp4",
     },
     {
-      title: "Automatic Chat",
+      title: "E-LMS",
       href: "https://automatic.chat",
-      dates: "April 2023 - March 2024",
+      dates: "",
       active: true,
       description:
         "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
