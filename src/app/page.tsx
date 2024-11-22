@@ -1,11 +1,16 @@
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import { DockIcon } from "@/components/magicui/dock";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { Tooltip } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
+import { cn } from "@/lib/utils";
+import { TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
@@ -23,11 +28,6 @@ export default function Page() {
                 className="text-xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
-              />
-              <BlurFadeText
-                className="max-w-[600px] md:text-xl"
-                delay={BLUR_FADE_DELAY}
-                text={DATA.description}
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
@@ -205,23 +205,37 @@ export default function Page() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                 Get in Touch
               </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed hidden md:block">
                 Want to chat? Just shoot me a dm with a direct question on{" "}
                 <Link
                   href={DATA.contact.social.Discord.url}
                   className="text-blue-500 hover:underline"
                 >
                   Discord
-                </Link>{" or "}
+                </Link>{" "}
+                or{" "}
                 <Link
                   href={DATA.contact.social.Whatsapp.url}
                   className="text-blue-500 hover:underline"
                 >
-                WhatsApp
+                  WhatsApp
                 </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all
-                soliciting.
+                and I&apos;ll respond whenever I can. I will ignore all soliciting.
               </p>
+              {/* Social media icons visible only on small screens */}
+              <div className="flex justify-center space-x-4 mt-4 md:hidden">
+                {Object.values(DATA.contact.social).map((social) => (
+                  <Link
+                    key={social.name}
+                    href={social.url}
+                    aria-label={social.name}
+                    className="text-muted-foreground hover:text-foreground"
+                    target="_blank"
+                  >
+                    {social.icon({ className: "w-6 h-6" })}
+                  </Link>
+                ))}
+              </div>
             </div>
           </BlurFade>
         </div>

@@ -40,7 +40,7 @@ export default function Navbar() {
         {Object.entries(DATA.contact.social)
           .filter(([_, social]) => social.navbar)
           .map(([name, social]) => (
-            <DockIcon key={name}>
+            <DockIcon key={name} className="hidden md:flex">
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
@@ -49,6 +49,7 @@ export default function Navbar() {
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12"
                     )}
+                    target="_blank"
                   >
                     <social.icon className="size-4" />
                   </Link>

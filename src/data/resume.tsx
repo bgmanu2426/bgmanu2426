@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+    "Student at University BDT College of Engineering pusuing Engineering in Electronics and Communication, passionate about leveraging cutting-edge technologies to drive innovation. With Web Development and Industrial IoT expertise, I am expanding my knowledge in VLSI design and Cloud Computing. My goal is to contribute to impactful projects that bridge technology and real-world applications while continuously growing in the tech domain.",
   avatarUrl: "/me.png",
   skills: [
     "React",
@@ -43,7 +43,7 @@ export const DATA = {
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/lakshminarayana-bg-7347931ba/",
+        url: "https://www.linkedin.com/in/lnbg7795",
         icon: Icons.linkedin,
         navbar: true,
       },
@@ -107,7 +107,7 @@ export const DATA = {
       dates: "",
       active: true,
       description:
-        "A React based application chatting application using the firebase as ",
+        "A React based application chatting application using the firebase as an BaaS and socket-io for real-time communication. It is a simple chat application where users can create rooms and chat with each other. It also has a feature to send images and emojis.",
       technologies: [
         "Next.js",
         "Firesbase",
