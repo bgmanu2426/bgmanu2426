@@ -1,16 +1,11 @@
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { DockIcon } from "@/components/magicui/dock";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
-import { Tooltip } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
-import { cn } from "@/lib/utils";
-import { TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
@@ -28,6 +23,11 @@ export default function Page() {
                 className="text-xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+              />
+              <BlurFadeText
+                className="max-w-[600px] md:text-xl"
+                delay={BLUR_FADE_DELAY}
+                text={DATA.description}
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
@@ -210,15 +210,17 @@ export default function Page() {
                 <Link
                   href={DATA.contact.social.Discord.url}
                   className="text-blue-500 hover:underline"
+                  target="_blank"
                 >
                   Discord
                 </Link>{" "}
                 or{" "}
                 <Link
-                  href={DATA.contact.social.Whatsapp.url}
+                  href={DATA.contact.social.LinkedIn.url}
                   className="text-blue-500 hover:underline"
+                  target="_blank"
                 >
-                  WhatsApp
+                  LinkedIn
                 </Link>{" "}
                 and I&apos;ll respond whenever I can. I will ignore all soliciting.
               </p>

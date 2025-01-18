@@ -8,13 +8,15 @@ export const DATA = {
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.",
+    "ECE student skilled in web development and IIoT || Seeking for Internships || Passionate about leveraging technology for innovation and impact.",
   summary:
     "Student at University BDT College of Engineering pusuing Engineering in Electronics and Communication, passionate about leveraging cutting-edge technologies to drive innovation. With Web Development and Industrial IoT expertise, I am expanding my knowledge in VLSI design and Cloud Computing. My goal is to contribute to impactful projects that bridge technology and real-world applications while continuously growing in the tech domain.",
   avatarUrl: "/me.png",
   skills: [
     "React",
     "Next.js",
+    "Tailwind",
+    "Nest.js",
     "Typescript",
     "Node.js",
     "Python",
@@ -22,9 +24,7 @@ export const DATA = {
     "MySQL",
     "MongoDB",
     "Docker",
-    "Embedded Systems",
-    "C++",
-    "IoT",
+    "IIoT",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -51,12 +51,6 @@ export const DATA = {
         name: "Discord",
         url: "https://discordapp.com/users/624290824762425353",
         icon: Icons.discord,
-        navbar: true,
-      },
-      Whatsapp: {
-        name: "Whatsapp",
-        url: "https://wa.me/919108670517",
-        icon: Icons.whatsapp,
         navbar: true,
       },
       email: {
@@ -128,7 +122,7 @@ export const DATA = {
       ],
       image: "",
       video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+        "",
     },
     {
       title: "AskFlow",
@@ -160,15 +154,15 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://cdn.magicui.design/bento-grid.mp4",
+      video: "",
     },
     {
       title: "RFID based Smart Attendance System",
-      href: "https://llm.report",
+      href: "https://ams-rfid.vercel.app/",
       dates: "",
       active: true,
       description:
-        "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
+        "An RFID based smart attendance system that uses RFID cards to mark attendance. It also has a feature to generate reports and send them to the respective emails.",
       technologies: [
         "Next.js",
         "Typescript",
@@ -183,7 +177,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://llm.report",
+          href: "https://ams-rfid.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -192,8 +186,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
-      video: "https://cdn.llm.report/openai-demo.mp4",
+      image: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/rfid-app.png",
+      video: "",
     },
     {
       title: "E-LMS",
@@ -239,67 +233,6 @@ export const DATA = {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
           href: "https://github.com/nsagirlfriend/nsagirlfriend",
-        },
-      ],
-    },
-    {
-      title: "McGill AI for Social Innovation Hackathon",
-      dates: "June 17th - 18th, 2017",
-      location: "Montreal, Quebec",
-      description:
-        "Developed realtime facial microexpression analyzer using AI",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/ai-for-social-good.jpg",
-      links: [],
-    },
-    {
-      title: "HackMining",
-      dates: "May 12th - 14th, 2017",
-      location: "Toronto, Ontario",
-      description: "Developed neural network to optimize a mining process",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-mining.png",
-      links: [],
-    },
-    {
-      title: "Waterloo Equithon",
-      dates: "May 5th - 7th, 2017",
-      location: "Waterloo, Ontario",
-      description:
-        "Developed Pocketdoc, an app in which you take a picture of a physical wound, and the app returns common solutions or cures to the injuries or diseases.",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/waterloo-equithon.png",
-      links: [
-        {
-          title: "Devpost",
-          icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://devpost.com/software/pocketdoc-react-native",
-        },
-        {
-          title: "YouTube",
-          icon: <Icons.youtube className="h-4 w-4" />,
-          href: "https://www.youtube.com/watch?v=XwFdn5Rmx68",
-        },
-        {
-          title: "Source",
-          icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/pocketdoc-react-native",
-        },
-      ],
-    },
-    {
-      title: "Portal Hackathon",
-      dates: "October 29, 2016",
-      location: "Kingston, Ontario",
-      description:
-        "Developed an internal widget for uploading assignments using Waterloo's portal app",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/portal-hackathon.png",
-      links: [
-        {
-          title: "Source",
-          icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/UWPortalSDK/crowmark",
         },
       ],
     },
