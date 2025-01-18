@@ -1,3 +1,5 @@
+"use client";
+
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
@@ -5,13 +7,30 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { useEffect, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const words = [
+    {
+      text: DATA.name,
+      className: "text-blue-500 dark:text-blue-500",
+    },
+    {
+      text: "👋",
+    }
+  ];
+  
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
@@ -22,8 +41,11 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                text={`Hi, I'm `}
               />
+              {isMounted && (
+                <TypewriterEffectSmooth className="text-xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none" words={words} />
+              )}
               <BlurFadeText
                 className="max-w-[600px] md:text-xl"
                 delay={BLUR_FADE_DELAY}

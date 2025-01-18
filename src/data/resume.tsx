@@ -64,6 +64,18 @@ export const DATA = {
 
   work: [
     {
+      company: "Carrer Development Break",
+      href: "#",
+      badges: [],
+      location: "",
+      title: "For Higher Education",
+      logoUrl: "",
+      start: "September 2023",
+      end: "present",
+      description:
+        "Started my career development break to focus on my studies and to learn new technologies. I am currently working only on a few projects and also learning new technologies.",
+    },
+    {
       company: "Freelancing",
       href: "#",
       badges: [],
@@ -71,7 +83,7 @@ export const DATA = {
       title: "Freelance Developer",
       logoUrl: "",
       start: "April 2022",
-      end: "present",
+      end: "September 2023",
       description:
         "A freelance developer who has worked with clients from all over the world. I have worked on a variety of projects ranging from web development to embedded systems and also have experience in IoT.",
     },
@@ -87,9 +99,9 @@ export const DATA = {
     },
     {
       school: "Govt. Polytechnic College",
-      href: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/gpt.png",
-      degree: "Diploma in Electronics and Communication Engineering", 
-      logoUrl: "/gpt.png",
+      href: "https://gpt.karnataka.gov.in/gptharihara",
+      degree: "Diploma in Electronics and Communication Engineering",
+      logoUrl: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/gpt.png",
       start: "2020",
       end: "2023",
     },
