@@ -8,10 +8,10 @@ export const DATA = {
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "ECE student skilled in web development and IIoT || Seeking for Internships || Passionate about leveraging technology for innovation and impact.",
+    "ECE student skilled in web development and IIoT || Passionate about leveraging technology for innovation and impact.",
   summary:
     "Student at University BDT College of Engineering pusuing Engineering in Electronics and Communication, passionate about leveraging cutting-edge technologies to drive innovation. With Web Development and Industrial IoT expertise, I am expanding my knowledge in VLSI design and Cloud Computing. My goal is to contribute to impactful projects that bridge technology and real-world applications while continuously growing in the tech domain.",
-  avatarUrl: "/me.png",
+  avatarUrl: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/me.jpg",
   skills: [
     "React",
     "Next.js",
@@ -81,13 +81,13 @@ export const DATA = {
       school: "University BDT College of Engineering",
       href: "https://www.ubdtce.org/",
       degree: "BE in Electronics and Communication Engineering",
-      logoUrl: "/ubdtce.png",
+      logoUrl: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/ubdtce.png",
       start: "2023",
       end: "2026",
     },
     {
       school: "Govt. Polytechnic College",
-      href: "https://gpt.karnataka.gov.in/gptharihara/public/en",
+      href: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/gpt.png",
       degree: "Diploma in Electronics and Communication Engineering", 
       logoUrl: "/gpt.png",
       start: "2020",
