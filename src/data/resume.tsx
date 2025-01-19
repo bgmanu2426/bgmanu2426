@@ -28,8 +28,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
-    { href: "/projects", icon: Code2Icon, label: "Projects" },
+    { href: "https://lnbg.hashnode.dev", icon: NotebookIcon, label: "Blog" }
   ],
   contact: {
     email: "bgmanu2426@gmail.com",
@@ -99,7 +98,7 @@ export const DATA = {
     },
     {
       school: "Govt. Polytechnic College",
-      href: "https://gpt.karnataka.gov.in/gptharihara",
+      href: "https://gpt.karnataka.gov.in/gptharihara/public/en",
       degree: "Diploma in Electronics and Communication Engineering",
       logoUrl: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/gpt.png",
       start: "2020",
