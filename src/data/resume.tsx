@@ -8,9 +8,9 @@ export const DATA = {
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "ECE student skilled in web development and IIoT || Passionate about leveraging technology for innovation and impact.",
+    "Skilled in web development and IIoT || Passionate about leveraging technology for innovation and impact.",
   summary:
-    "Student at University BDT College of Engineering pusuing Engineering in Electronics and Communication, passionate about leveraging cutting-edge technologies to drive innovation. With Web Development and Industrial IoT expertise, I am expanding my knowledge in VLSI design and Cloud Computing. My goal is to contribute to impactful projects that bridge technology and real-world applications while continuously growing in the tech domain.",
+    "Student at University BDT College of Engineering pusuing Engineering in Electronics and Communication, passionate about leveraging cutting-edge technologies to drive innovation. With Web Development and Industrial IoT expertise, I am expanding my knowledge in Data Science and Cloud Computing. My goal is to contribute to impactful projects that bridge technology and real-world applications while continuously growing in the tech domain.",
   avatarUrl: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/me.jpg",
   skills: [
     "React",
@@ -25,6 +25,8 @@ export const DATA = {
     "MongoDB",
     "Docker",
     "IIoT",
+    "AWS",
+    "Azure"
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -107,6 +109,39 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "RFID based Smart Attendance System",
+      href: "https://ams-rfid.vercel.app/",
+      dates: "",
+      active: true,
+      description:
+        "An RFID based smart attendance system that uses RFID cards to mark attendance. It also has a feature to generate reports and send them to the respective emails.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Magic UI",
+        "Stripe",
+        "Cloudflare Workers",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://ams-rfid.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/dillionverma/llm.report",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/AMS-video.mp4",
+    },
+    {
       title: "FireChatz",
       href: "https://github.com/bgmanu2426/FireChatz",
       dates: "",
@@ -165,39 +200,6 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "",
-    },
-    {
-      title: "RFID based Smart Attendance System",
-      href: "https://ams-rfid.vercel.app/",
-      dates: "",
-      active: true,
-      description:
-        "An RFID based smart attendance system that uses RFID cards to mark attendance. It also has a feature to generate reports and send them to the respective emails.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://ams-rfid.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/rfid-app.png",
       video: "",
     },
     {
