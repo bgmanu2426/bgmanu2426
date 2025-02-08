@@ -3,7 +3,7 @@ import Typewriter from 'typewriter-effect';
 
 const Hero = () => {
   return (
-    <section id="about" className="md:min-h-screen min-h-[50vh] flex items-center pt-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 md:mb-10 md:px-10">
+    <section id="about" className="min-h-screen flex items-center pt-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 md:mb-10 md:px-10">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">
