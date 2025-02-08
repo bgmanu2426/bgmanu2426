@@ -6,8 +6,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'bgmanu2426@gmail.com',
-    link: 'mailto:bgmanu2426@gmail.com'
+    value: 'lnbg720@gmail.com',
+    link: 'mailto:lnbg720@gmail.com'
   },
   {
     icon: SiWhatsapp,
