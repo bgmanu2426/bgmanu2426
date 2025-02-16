@@ -2,33 +2,28 @@
 ![Profile Views](https://komarev.com/ghpvc/?username=bgmanu2426&color=blue&style=flat-square)
 
 ## 🌐 Socials
+[![Personal Website](https://img.shields.io/badge/Website-%23000000.svg?style=for-the-badge&logo=About.me&logoColor=white)](https://lnbg-portfolio.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-%2312100E.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/bgmanu2426)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lnbg7795)
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/manu._.bg)
-[![Personal Website](https://img.shields.io/badge/Website-%23000000.svg?style=for-the-badge&logo=About.me&logoColor=white)](https://lnbg-portfolio.vercel.app)
 
 ## 🏆 Achievements
 
 ### 🎓 Education
-- **Master's in Computer Science** from XYZ University
-- **Bachelor's in Information Technology** from ABC College
+- **Bachelor's in Electronics and Communication** from University BDT College of Engineering
+- **Diploma in Electronics and Communication** from Government Ploytechnic College
 
 ### 🚀 Professional Experience
-- **Software Engineer** at [Tech Company](https://techcompany.com)
-  - Developed and maintained web applications using React, Node.js, and MongoDB.
-  - Led a team of 5 developers, ensuring project deadlines were met.
-- **Intern** at [Startup Inc.](https://startup.com)
-  - Assisted in the development of a mobile app using Flutter and Firebase.
-  - Conducted user testing and provided feedback for UI/UX improvements.
+- **Intern** at [Gameexp](https://www.gameexp.com)
+  - Assisted in the development of a AI based plagarism detector to identify AI content in the reviews.
+  - Conducted user testing and provided feedback.
 
 ### 📜 Certifications
-- **Certified Kubernetes Administrator (CKA)**
-- **AWS Certified Solutions Architect – Associate**
-- **Google Associate Cloud Engineer**
+- **Github Foundations**
+- **Remote Sensing and Digital Image Analysis**
 
 ### 🏅 Awards
-- **Best Developer of the Year 2024** at Tech Company
-- **Hackathon Winner** at XYZ University
+- **Hackathon Runner-up** at FOSS Hack 2023
 
 ## 💻 Tech Stack
 
