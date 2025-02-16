@@ -82,7 +82,7 @@
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=bgmanu2426&layout=compact&theme=radical)
 
 ## 📊 GitHub Contributions
-![GitHub Contributions](https://github-readme-streak-stats.herokuapp.com/?user=bgmanu2426&theme=radical)
+![GitHub Contributions](https://github-readme-streak-stats.herokuapp.com/?user=bgmanu2426&theme=radical&date_format=j%20M%5B%20Y%5D)
 
 ## 💼 Projects
 ### [Playnex-Backend](https://github.com/bgmanu2426/playnex-backend)
