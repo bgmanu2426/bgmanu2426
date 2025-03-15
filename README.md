@@ -103,6 +103,5 @@
 ## 🌟 Support
 If you like my work, consider buying me a coffee!
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%23FFDD00.svg?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/lnbg)
-
+Sry i dont have `Buy me a coffee` button here, better meet me in-person and buy me a coffee 😁😅...
 ---
