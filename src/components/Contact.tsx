@@ -6,14 +6,14 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'lnbg720@gmail.com',
-    link: 'mailto:lnbg720@gmail.com'
+    value: 'admin@lnbg.in',
+    link: 'mailto:admin@lnbg.in'
   },
   {
     icon: SiWhatsapp,
     label: 'WhatsaApp',
     value: '+91 7204000742',
-    link: 'https://wa.me/917204000742'
+    link: 'https://lnbg.in/whatsapp'
   },
   {
     icon: MapPin,
@@ -28,19 +28,19 @@ const socialLinks = [
     icon: SiGithub,
     label: 'GitHub',
     value: '@bgmanu2426',
-    link: 'https://github.com/bgmanu2426'
+    link: 'https://lnbg.in/github'
   },
   {
     icon: SiLinkedin,
     label: 'LinkedIn',
     value: '@lnbg7795',
-    link: 'https://www.linkedin.com/in/lnbg7795'
+    link: 'https://lnbg.in/linkedin'
   },
   {
     icon: SiDiscord,
     label: 'Discord',
     value: '@bgmanu',
-    link: 'https://discordapp.com/users/624290824762425353'
+    link: 'https://lnbg.in/discord'
   }
 ];
 

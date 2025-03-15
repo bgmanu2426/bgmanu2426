@@ -1,0 +1,34 @@
+{
+    "redirects": [
+        {
+            "source": "/github",
+            "destination": "https://github.com/bgmanu2426",
+            "permanent": true
+        },
+        {
+            "source": "/instagram",
+            "destination": "https://www.instagram.com/manu._.bg",
+            "permanent": true
+        },
+        {
+            "source": "/linkedin",
+            "destination": "https://www.linkedin.com/in/lnbg",
+            "permanent": true
+        },
+        {
+            "source": "/whatsapp",
+            "destination": "https://wa.me/917204000742",
+            "permanent": true
+        },
+        {
+            "source": "/discord",
+            "destination": "https://discordapp.com/users/624290824762425353",
+            "permanent": true
+        },
+        {
+            "source": "/resume",
+            "destination": "https://storage.rxresu.me/cm3qleyi710w8dbpoekj62ubo/resumes/my-resume.pdf",
+            "permanent": true
+        }
+    ]
+}

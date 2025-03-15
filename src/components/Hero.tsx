@@ -34,7 +34,7 @@ const Hero = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </a>
               <a
-                href="https://storage.rxresu.me/cm3qleyi710w8dbpoekj62ubo/resumes/my-resume.pdf"
+                href="https://lnbg.in/resume"
                 className="inline-flex items-center px-4 py-2 bg-blue-600 dark:bg-blue-400 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors text-sm"
                 download
               >
