@@ -2,16 +2,16 @@
 ![Profile Views](https://komarev.com/ghpvc/?username=bgmanu2426&color=blue&style=flat-square)
 
 ## 🌐 Socials
-[![Personal Website](https://img.shields.io/badge/Website-%23000000.svg?style=for-the-badge&logo=About.me&logoColor=white)](https://lnbg-portfolio.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-%2312100E.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/bgmanu2426)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lnbg7795)
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/manu._.bg)
+[![Personal Website](https://img.shields.io/badge/Website-%23000000.svg?style=for-the-badge&logo=About.me&logoColor=white)](https://lnbg.in)
+[![GitHub](https://img.shields.io/badge/GitHub-%2312100E.svg?style=for-the-badge&logo=github&logoColor=white)](https://lnbg.in/github)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://lnbg.in/linkedin)
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://lnbg.in/instagram)
 
 ## 🏆 Achievements
 
 ### 🎓 Education
-- **Bachelor's in Electronics and Communication** from University BDT College of Engineering
-- **Diploma in Electronics and Communication** from Government Ploytechnic College
+- **Bachelor's in Electronics and Communication** from [University BDT College of Engineering](https://www.ubdtce.org/)
+- **Diploma in Electronics and Communication** from [Government Ploytechnic College](https://gpt.karnataka.gov.in/gptharihara/public/en)
 
 ### 🚀 Professional Experience
 - **Intern** at [Gameexp](https://www.gameexp.com)
@@ -98,7 +98,7 @@
 - Tech Stack: Django, Python, SQLite, TailwindCSS
 
 ## ✍️ Blog Posts
-- [Click here to read my blogs](https://lnbg.hashnode.dev/)
+- [Click here to read my blogs](https://blogs.lnbg.in/)
 
 ## 🌟 Support
 If you like my work, consider buying me a coffee!
