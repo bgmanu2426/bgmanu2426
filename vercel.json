@@ -29,6 +29,21 @@
             "source": "/resume",
             "destination": "https://storage.rxresu.me/cm3qleyi710w8dbpoekj62ubo/resumes/my-resume.pdf",
             "permanent": true
+        },
+        {
+            "source": "/credly",
+            "destination": "https://www.credly.com/users/lnbg",
+            "permanent": true
+        },
+        {
+            "source": "/cloudskillboost",
+            "destination": "https://www.cloudskillsboost.google/public_profiles/3c6183f6-5222-4962-827e-6360eb7bffbd",
+            "permanent": true
+        },
+        {
+            "source": "/google-developer",
+            "destination": "https://g.dev/lnbg",
+            "permanent": true
         }
     ]
 }
