@@ -44,6 +44,11 @@
             "source": "/google-developer",
             "destination": "https://g.dev/lnbg",
             "permanent": true
+        },
+        {
+            "source": "/peerlist",
+            "destination": "https://peerlist.io/bgmanu",
+            "permanent": true
         }
     ]
 }
