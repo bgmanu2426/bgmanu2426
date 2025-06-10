@@ -6,7 +6,7 @@ const projects = [
   {
     title: 'PlayNex Backend API',
     description: 'PlayNex is a robust backend for a YouTube-like video streaming application, integrating MongoDB for data persistence and Cloudinary for media management. It provides secure, RESTful API endpoints documented using Swagger for ease of development and testing.',
-    image: 'https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/projects/video-app.avif',
+    image: 'https://cdn.lnbg.in/projects/video-app.avif',
     tech: ['Node.js', 'Express.js', 'Swagger', "MongoDB", "Cloudinary", "Docker"],
     github: 'https://github.com/bgmanu2426/playnex-backend',
     demo: 'https://playnex-backend.onrender.com'
@@ -14,14 +14,14 @@ const projects = [
   {
     title: 'RFID Based Smart Attendance System',
     description: 'A smart attendance system that uses RFID technology to automate attendance marking for students and staff. The system is built using an ESP32 microcontroller, RFID reader, and a web application for attendance management.',
-    image: 'https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/projects/rfid-app.avif',
+    image: 'https://cdn.lnbg.in/projects/rfid-app.avif',
     tech: ['PHP', 'ESP32', 'RFID', 'MariaDB', "Arduino", "Apache", "AWS EC2"],
     github: 'https://github.com/bgmanu2426/rfid-attendance-system',
   },
   {
     title: 'FireChatz (Realtime Chat Application)',
     description: 'FireChatz is a real-time chat application built using React, Firebase, and Socket.io. It allows users to create chat rooms, join existing rooms, and chat with other users in real-time. The application is built using Next.js and Tailwind CSS.',
-    image: 'https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/projects/chat-app.jpg',
+    image: 'https://cdn.lnbg.in/projects/chat-app.jpg',
     tech: ['Reactjs', 'Firebase', 'Nextjs', 'Socket.io', "Tailwind CSS"],
     github: 'https://github.com/bgmanu2426/FireChatz',
     demo: 'https://firechatzz.vercel.app'

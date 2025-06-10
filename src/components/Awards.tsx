@@ -6,37 +6,37 @@ const awards = [
     title: 'Github Foundations',
     organization: 'GitHub',
     date: 'January 2025',
-    badge: 'https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/awards_certifis/github-foundations.png'
+    badge: 'https://cdn.lnbg.in/awards_certifis/github-foundations.png'
   },
   {
     title: 'Remote Sensing and Digital Image Analysis',
     organization: 'ISRO',
     date: 'October 2024',
-    badge: 'https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/awards_certifis/isro.jpeg'
+    badge: 'https://cdn.lnbg.in/awards_certifis/isro.jpeg'
   },
   {
     title: 'Techtonic - DSATM',
     organization: 'DSATM',
     date: 'July 2024',
-    badge: 'https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/awards_certifis/techtonic-dsatm.png'
+    badge: 'https://cdn.lnbg.in/awards_certifis/techtonic-dsatm.png'
   },
   {
     title: "FOSS Hack 2023",
     organization: "FOSS Hack",
     date: "August 2023",
-    badge: "https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/awards_certifis/foss-hack.webp"
+    badge: "https://cdn.lnbg.in/awards_certifis/foss-hack.webp"
   },
   {
     title: 'PW Skills Hackathon',
     organization: 'Physics Wallah',
     date: 'January 2023',
-    badge: 'https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/awards_certifis/pw.jpg'
+    badge: 'https://cdn.lnbg.in/awards_certifis/pw.jpg'
   },
   {
     title: 'TATA Rural IT Quiz (National Level)',
     organization: 'Tata Consultancy Services',
     date: 'September 2019',
-    badge: 'https://pub-d600b57d450e41c7b0bd406a961f2e89.r2.dev/awards_certifis/tata_consultancy_service.jpeg'
+    badge: 'https://cdn.lnbg.in/awards_certifis/tata_consultancy_service.jpeg'
   },
 ];
 
