@@ -84,19 +84,6 @@
 ## 📊 GitHub Contributions
 ![GitHub Contributions](https://github-readme-streak-stats.herokuapp.com/?user=bgmanu2426&theme=radical&date_format=j%20M%5B%20Y%5D)
 
-## 💼 Projects
-### [Playnex-Backend](https://github.com/bgmanu2426/playnex-backend)
-**Description:** PlayNex is a robust backend for a YouTube-like video streaming application, integrating MongoDB for data persistence and Cloudinary for media management. It provides secure, RESTful API endpoints documented using Swagger for ease of development and testing.
-- Tech Stack: Nodejs, Javadsript, MongoDB, Cloudinary, Swagger
-
-### [RFID-Attendance-System](https://github.com/bgmanu2426/rfid-attendance-system)
-**Description:** This is a smart RFID based student attendance system made for final year project with ESP32 and RFID-RC522 module. It is built using Arduino IDE and C++. It is a cost-effective and efficient solution for attendance management in schools and colleges.
-- Tech Stack: PHP, MySQL, HTML, CSS, JavaScript, Arduino, ESP32, RFID-RC522
-
-### [Django-Blogs](https://github.com/bgmanu2426/django-blogs)
-**Description:** Django-Blogs is a full-stack web application that allows users to create, read, update, and delete blog posts. It is built using Django, a high-level Python web framework, and SQLite for data storage.
-- Tech Stack: Django, Python, SQLite, TailwindCSS
-
 ## ✍️ Blog Posts
 - [Click here to read my blogs](https://blogs.lnbg.in/)
 
