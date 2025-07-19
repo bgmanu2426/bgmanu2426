@@ -17,7 +17,7 @@ export default {
         content: {
           light: '#1f2937',
           dark: '#f9fafb',
-        }
+        },
       },
       animation: {
         'slide-in': 'slideIn 0.5s ease-out',

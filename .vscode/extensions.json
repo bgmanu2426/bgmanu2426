@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "dsznajder.es7-react-js-snippets",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "streetsidesoftware.code-spell-checker",
+    "davidanson.vscode-markdownlint",
+    "usernamehw.errorlens",
+    "yzhang.markdown-all-in-one"
+  ]
+}
