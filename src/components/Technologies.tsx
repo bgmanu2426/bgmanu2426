@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaNodeJs, FaPython, FaAws, FaJsSquare, FaRaspberryPi } from 'react-icons/fa';
 import {
   SiTypescript,
@@ -16,57 +16,76 @@ import { RiNextjsFill } from 'react-icons/ri';
 import { VscAzure } from 'react-icons/vsc';
 import { useRef, useEffect, useState } from 'react';
 import AnimatedBackground from './AnimatedBackground';
+import { Code, Database, Palette, Server } from 'lucide-react';
+import { IconType } from 'react-icons';
 
-const technologies = [
-  {
-    category: 'Frontend',
-    skills: [
-      { name: 'JavaScript', icon: FaJsSquare, proficiency: 90 },
-      { name: 'TypeScript', icon: SiTypescript, proficiency: 70 },
-      { name: 'Tailwind CSS', icon: SiTailwindcss, proficiency: 80 },
-      { name: 'React', icon: SiReact, proficiency: 70 },
-      { name: 'Next.js', icon: RiNextjsFill, proficiency: 90 },
-    ],
-  },
-  {
-    category: 'Backend',
-    skills: [
-      { name: 'Node.js', icon: FaNodeJs, proficiency: 90 },
-      { name: 'Express.js', icon: SiExpress, proficiency: 90 },
-      { name: 'Docker', icon: SiDocker, proficiency: 60 },
-      { name: 'PostgreSQL', icon: SiPostgresql, proficiency: 60 },
-      { name: 'MongoDB', icon: SiMongodb, proficiency: 90 },
-    ],
-  },
-  {
-    category: 'IoT & Embedded Systems',
-    skills: [
-      { name: 'Arduino', icon: SiArduino, proficiency: 100 },
-      { name: 'Raspberry Pi', icon: FaRaspberryPi, proficiency: 80 },
-      { name: 'Espressif', icon: SiEspressif, proficiency: 70 },
-      { name: 'AWS', icon: FaAws, proficiency: 70 },
-      { name: 'Azure', icon: VscAzure, proficiency: 60 },
-    ],
-  },
-  {
-    category: 'AI & ML',
-    skills: [
-      { name: 'Python', icon: FaPython, proficiency: 85 },
-      { name: 'TensorFlow', icon: SiTensorflow, proficiency: 70 },
-    ],
-  },
+// Define type for a skill
+interface Skill {
+  name: string;
+  icon: IconType;
+  level: number;
+}
+
+// Define type for skills object
+interface SkillsData {
+  [key: string]: Skill[];
+}
+
+const skills: SkillsData = {
+  frontend: [
+    { name: 'JavaScript', icon: FaJsSquare, level: 90 },
+    { name: 'TypeScript', icon: SiTypescript, level: 70 },
+    { name: 'Tailwind CSS', icon: SiTailwindcss, level: 80 },
+    { name: 'React', icon: SiReact, level: 70 },
+    { name: 'Next.js', icon: RiNextjsFill, level: 90 },
+  ],
+  backend: [
+    { name: 'Node.js', icon: FaNodeJs, level: 90 },
+    { name: 'Express.js', icon: SiExpress, level: 90 },
+    { name: 'Docker', icon: SiDocker, level: 60 },
+    { name: 'Python', icon: FaPython, level: 85 },
+    { name: 'REST APIs', icon: SiExpress, level: 85 },
+  ],
+  database: [
+    { name: 'PostgreSQL', icon: SiPostgresql, level: 60 },
+    { name: 'MongoDB', icon: SiMongodb, level: 90 },
+    { name: 'Firebase', icon: SiMongodb, level: 75 },
+  ],
+  tools: [
+    { name: 'AWS', icon: FaAws, level: 70 },
+    { name: 'Azure', icon: VscAzure, level: 60 },
+    { name: 'Arduino', icon: SiArduino, level: 100 },
+    { name: 'Raspberry Pi', icon: FaRaspberryPi, level: 80 },
+    { name: 'Espressif', icon: SiEspressif, level: 70 },
+    { name: 'TensorFlow', icon: SiTensorflow, level: 70 },
+  ],
+};
+
+// Define category type
+interface SkillCategory {
+  id: string;
+  name: string;
+  icon: React.ComponentType;
+}
+
+const skillCategories: SkillCategory[] = [
+  { id: 'frontend', name: 'Frontend', icon: Palette },
+  { id: 'backend', name: 'Backend', icon: Server },
+  { id: 'database', name: 'Database', icon: Database },
+  { id: 'tools', name: 'Tools', icon: Code },
 ];
 
 const Technologies = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
+  const [activeSkillCategory, setActiveSkillCategory] = useState('frontend');
 
-  // Set up intersection observer
+  // Set up intersection observer to detect when the section is in view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+        // We can use this later if needed
         if (entry.isIntersecting) {
-          setIsInView(true);
+          // Section is in view
         }
       },
       { threshold: 0.2 }
@@ -84,193 +103,175 @@ const Technologies = () => {
     };
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.43, 0.13, 0.23, 0.96],
-        staggerChildren: 0.1,
-      },
-    },
-    hover: {
-      y: -8,
-      boxShadow: '0 20px 30px -10px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-      transition: {
-        duration: 0.3,
-        type: 'spring',
-        stiffness: 300,
-      },
-    },
-  };
-
-  const skillVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      dark: { backgroundColor: 'rgba(31, 41, 55, 1)' },
-      transition: { duration: 0.5 },
-    },
-  };
-
-  const progressVariants = {
-    hidden: { width: '0%' },
-    visible: (proficiency: number) => ({
-      width: `${proficiency}%`,
-      transition: {
-        duration: 1.2,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
-    }),
-    hover: {
-      filter: 'brightness(1.1)',
-      boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)',
-    },
-  };
-
-  const iconContainerVariants = {
-    hover: {
-      backgroundColor: 'rgba(59, 130, 246, 0.3)',
-      scale: 1.2,
-      rotate: [0, -5, 5, -5, 0],
-      transition: { duration: 0.5 },
-    },
-  };
+  // Simplified component - removed unused animation variants
 
   return (
     <motion.section
       id="technologies"
-      className="py-20 bg-background-light dark:bg-background-dark transition-colors duration-300 relative"
+      className="py-20 bg-black text-white relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <AnimatedBackground variant="waves" />
+      <AnimatedBackground variant="orange-glow" />
+
+      {/* Floating Code Elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 text-orange-400/20 text-4xl font-mono animate-bounce delay-300">
+          {'<>'}
+        </div>
+        <div className="absolute top-40 right-20 text-blue-400/20 text-3xl font-mono animate-bounce delay-700">
+          {'{}'}
+        </div>
+        <div className="absolute bottom-40 left-20 text-green-400/20 text-5xl font-mono animate-bounce delay-1000">
+          {'[]'}
+        </div>
+        <div className="absolute bottom-20 right-40 text-purple-400/20 text-2xl font-mono animate-bounce delay-1500">
+          {'()'}
+        </div>
+      </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={containerRef}>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl font-bold text-center mb-16 text-content-light dark:text-content-dark relative"
-        >
-          Technologies & Skills
-          <motion.span
-            className="absolute left-1/2 -bottom-3 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
-            initial={{ width: 0 }}
-            whileInView={{ width: '150px' }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            style={{ x: '-50%' }}
+        <div className="relative mb-16">
+          {/* Floating background elements */}
+          <motion.div
+            className="absolute -top-8 -left-8 w-32 h-32 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-full blur-2xl"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.5, 0.7, 0.5],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
           />
-        </motion.h2>
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover="hover"
-              transition={{ duration: 0.3 }}
-              className="dark:bg-gray-800/90 backdrop-blur-sm rounded-xl p-6 shadow-lg transform-gpu"
-            >
-              <motion.div
-                className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 transition-opacity duration-300"
-                whileHover={{ opacity: 1 }}
-              />
+          <motion.div
+            className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-2xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: 1,
+            }}
+          />
 
-              <motion.h3
-                className="text-xl font-bold mb-4 text-primary dark:text-primary-light relative z-10"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 + index * 0.1 }}
-                whileHover={{
-                  scale: 1.05,
-                  textShadow: '0px 0px 5px rgba(59, 130, 246, 0.3)',
-                }}
-              >
-                {tech.category}
-              </motion.h3>
-              <div className="space-y-4 relative z-10">
-                {tech.skills.map((skill, i) => (
-                  <motion.div key={i} className="relative" variants={skillVariants}>
-                    <motion.div
-                      className="flex items-center mb-2"
-                      whileHover={{ x: 3 }}
-                      transition={{ duration: 0.2 }}
-                    >
+          {/* Header text with floating animation */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            animate={{ y: [0, -8, 0] }}
+            className="text-4xl font-bold text-center text-white relative"
+          >
+            My{' '}
+            <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+              Skills
+            </span>
+            <motion.span
+              className="absolute left-1/2 -bottom-3 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full"
+              initial={{ width: 0 }}
+              whileInView={{ width: '150px' }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              style={{ x: '-50%' }}
+            />
+          </motion.h2>
+        </div>
+
+        {/* Skill Categories */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {skillCategories.map(category => (
+            <motion.button
+              key={category.id}
+              onClick={() => setActiveSkillCategory(category.id)}
+              className={
+                'flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ' +
+                (activeSkillCategory === category.id
+                  ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg'
+                  : 'bg-neutral-900 border border-neutral-700 text-neutral-400 hover:border-orange-500 hover:text-orange-400')
+              }
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            >
+              <category.icon className="w-5 h-5" />
+              <span>{category.name}</span>
+            </motion.button>
+          ))}
+        </div>
+
+        {/* Skills Grid */}
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSkillCategory}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {skills[activeSkillCategory].map(skill => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  whileHover={{ scale: 1.03, y: -5, borderColor: 'rgba(249, 115, 22, 0.5)' }}
+                  className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 transition-all duration-300"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center space-x-3">
                       <motion.div
-                        whileHover="hover"
-                        variants={iconContainerVariants}
-                        className="p-1 rounded-full bg-primary/10 dark:bg-primary-dark/10 transition-colors"
-                      >
-                        <skill.icon className="w-6 h-6 text-primary dark:text-primary-light" />
-                      </motion.div>
-                      <span className="text-content-light dark:text-content-dark ml-2">
-                        {skill.name}
-                      </span>
-                      <motion.span
-                        className="ml-auto text-sm text-gray-500 dark:text-gray-400 font-medium"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5 + i * 0.1 }}
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        {skill.proficiency}%
-                      </motion.span>
-                    </motion.div>
-                    <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative">
-                      <motion.div
-                        custom={skill.proficiency}
-                        variants={progressVariants}
-                        whileHover="hover"
-                        className="h-full rounded-full relative"
-                        style={{
-                          backgroundImage: `linear-gradient(90deg, #3b82f6 0%, #4f46e5 100%)`,
+                        className="w-10 h-10 flex items-center justify-center rounded-md bg-gradient-to-br from-orange-500/20 to-red-500/20 text-orange-400"
+                        whileHover={{
+                          scale: 1.2,
+                          backgroundColor: 'rgba(249, 115, 22, 0.3)',
+                          transition: { duration: 0.3, type: 'spring', stiffness: 400 },
                         }}
                       >
-                        {/* Animated shimmer effect */}
-                        <motion.div
-                          className="absolute inset-0 w-full h-full"
-                          style={{
-                            backgroundImage: `linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)`,
-                            backgroundSize: '200% 100%',
-                          }}
-                          animate={{
-                            backgroundPosition: ['100% 0%', '-100% 0%'],
-                          }}
-                          transition={{
-                            duration: 1.5,
-                            repeat: Infinity,
-                            ease: 'linear',
-                          }}
-                        />
+                        <skill.icon className="w-5 h-5" />
                       </motion.div>
+                      <span className="text-white font-semibold">{skill.name}</span>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
+                    <span className="text-orange-400 font-bold">{skill.level}%</span>
+                  </div>
+                  <div className="w-full bg-neutral-800 rounded-full h-2 overflow-hidden">
+                    <motion.div
+                      initial={{ width: '0%' }}
+                      animate={{ width: `${skill.level}%` }}
+                      key={`${activeSkillCategory}-${skill.name}`}
+                      transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
+                      className="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full relative"
+                    >
+                      {/* Animated shimmer effect */}
+                      <motion.div
+                        className="absolute inset-0 w-full h-full"
+                        style={{
+                          backgroundImage: `linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)`,
+                          backgroundSize: '200% 100%',
+                        }}
+                        animate={{
+                          backgroundPosition: ['100% 0%', '-100% 0%'],
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: 'linear',
+                        }}
+                      />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </motion.section>
   );

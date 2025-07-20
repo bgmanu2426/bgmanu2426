@@ -10,6 +10,7 @@ const Header = () => {
   const [isDark, setIsDark] = useDarkMode();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -38,11 +39,26 @@ const Header = () => {
       }
     };
 
+    const handleResize = () => {
+      const isDesktopSize = window.innerWidth >= 768;
+      setIsDesktop(isDesktopSize);
+
+      if (isDesktopSize && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    // Initial check
+    handleResize();
+
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   const navItems = [
     { name: 'About', href: '#about' },
@@ -54,12 +70,15 @@ const Header = () => {
 
   const headerVariants = {
     initial: {
-      boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
       y: 0,
+      scale: 1,
     },
     scrolled: {
-      boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.1)',
+      boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)',
       y: 0,
+      // Only scale on desktop, not on mobile
+      scale: isDesktop ? 0.98 : 1,
       transition: {
         type: 'spring',
         stiffness: 300,
@@ -68,6 +87,7 @@ const Header = () => {
     },
     hidden: {
       y: -100,
+      scale: isDesktop ? 0.9 : 1,
       transition: {
         type: 'spring',
         stiffness: 300,
@@ -88,7 +108,7 @@ const Header = () => {
     }),
     hover: {
       y: -3,
-      color: isDark ? '#ffffff' : '#000000',
+      color: '#f97316',
       transition: {
         duration: 0.2,
         type: 'spring',
@@ -96,7 +116,7 @@ const Header = () => {
       },
     },
     active: {
-      color: isDark ? '#60a5fa' : '#2563eb',
+      color: '#f97316',
       fontWeight: 'bold' as const,
     },
   };
@@ -105,6 +125,7 @@ const Header = () => {
     closed: {
       opacity: 0,
       y: -20,
+      scale: 0.95,
       transition: {
         duration: 0.3,
         when: 'afterChildren',
@@ -115,6 +136,7 @@ const Header = () => {
     open: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
         duration: 0.3,
         when: 'beforeChildren',
@@ -129,7 +151,7 @@ const Header = () => {
     open: { opacity: 1, y: 0 },
     hover: {
       x: 5,
-      color: isDark ? '#60a5fa' : '#2563eb',
+      color: '#f97316',
       transition: {
         duration: 0.2,
         type: 'spring',
@@ -137,7 +159,7 @@ const Header = () => {
       },
     },
     active: {
-      color: isDark ? '#60a5fa' : '#2563eb',
+      color: '#f97316',
       fontWeight: 'bold' as const,
     },
   };
@@ -147,7 +169,7 @@ const Header = () => {
     dark: { rotate: 180 },
     hover: {
       scale: 1.1,
-      boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)',
+      boxShadow: '0 0 15px rgba(249, 115, 22, 0.5)',
       transition: {
         duration: 0.3,
         type: 'spring',
@@ -169,7 +191,7 @@ const Header = () => {
     },
     hover: {
       scale: 1.1,
-      textShadow: '0 0 8px rgba(59, 130, 246, 0.7)',
+      textShadow: '0 0 8px rgba(249, 115, 22, 0.7)',
       transition: {
         duration: 0.3,
         type: 'spring',
@@ -202,231 +224,193 @@ const Header = () => {
   };
 
   return (
-    <motion.header
-      className={`fixed top-0 left-0 right-0 backdrop-blur-sm z-50 transition-all duration-300 ${
-        scrolled ? 'py-2' : 'py-4'
-      } ${
-        scrolled
-          ? 'bg-background-light/90 dark:bg-background-dark/90'
-          : 'bg-background-light/80 dark:bg-background-dark/80'
-      } relative overflow-hidden`}
-      initial="initial"
-      animate={scrolled ? 'scrolled' : 'initial'}
-      variants={headerVariants}
-      transition={{ duration: 0.3 }}
-    >
-      <AnimatedBackground variant="default" opacity={0.03} />
-      <nav className="container mx-auto px-6">
-        <div className="flex items-center justify-between">
-          <motion.a
-            href="#home"
-            variants={logoVariants}
-            initial="initial"
-            animate="animate"
-            whileHover="hover"
-            whileTap="tap"
-            className="text-2xl font-bold relative"
-          >
-            <motion.span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">
-              🧑‍💻
-            </motion.span>
-          </motion.a>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, i) => (
-              <motion.a
-                key={i}
-                href={item.href}
-                custom={i}
-                variants={navItemVariants}
-                initial="initial"
-                animate="animate"
-                whileHover="hover"
-                className={`text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors relative`}
-                style={
-                  activeSection === item.href.substring(1)
-                    ? { color: isDark ? '#60a5fa' : '#2563eb' }
-                    : {}
-                }
-              >
-                {item.name}
-                {activeSection === item.href.substring(1) && (
-                  <motion.span
-                    className="absolute bottom-[-6px] left-0 h-[2px] bg-blue-500 dark:bg-blue-400"
-                    layoutId="activeSection"
-                    initial={{ width: 0 }}
-                    animate={{ width: '100%' }}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
-              </motion.a>
-            ))}
+    <>
+      <motion.header
+        className={`fixed transition-all duration-300 backdrop-blur-md z-50 overflow-hidden
+          ${scrolled ? 'py-3' : 'py-4'}
+          ${scrolled ? 'bg-black/90' : 'bg-black/70'}
+          
+          /* Mobile: Fixed at top */
+          md:top-4 md:left-4 md:right-4 md:mx-auto md:max-w-7xl md:rounded-2xl md:border md:border-white/10 md:shadow-2xl
+          
+          /* Small screens: Full width at top */
+          top-0 left-0 right-0 border-b border-white/10
+        `}
+        initial="initial"
+        animate={scrolled ? 'scrolled' : 'initial'}
+        variants={headerVariants}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Floating animation only on desktop */}
+        <motion.div
+          animate={{
+            y: isDesktop ? [0, -2, 0] : 0,
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-red-500/5"
+        />
+        <AnimatedBackground variant="orange-glow" opacity={0.02} />
+        <nav className="container mx-auto px-6 relative z-10">
+          <div className="flex items-center justify-between">
             <motion.a
-              href="https://blogs.lnbg.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              variants={blogButtonVariants}
+              href="#home"
+              variants={logoVariants}
               initial="initial"
               animate="animate"
               whileHover="hover"
               whileTap="tap"
-              className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors relative overflow-hidden group"
+              className="text-2xl font-bold relative"
             >
-              <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.4 }}
-              />
-              <span className="relative z-10 flex items-center">
-                <SiHashnode className="inline-block mr-1 pb-[1]" /> Blogs
-              </span>
+              <motion.span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-red-500">
+                🧑‍💻
+              </motion.span>
             </motion.a>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item, i) => (
+                <motion.a
+                  key={i}
+                  href={item.href}
+                  custom={i}
+                  variants={navItemVariants}
+                  initial="initial"
+                  animate="animate"
+                  whileHover="hover"
+                  className={`text-white/80 hover:text-white transition-colors relative`}
+                  style={activeSection === item.href.substring(1) ? { color: '#f97316' } : {}}
+                >
+                  {item.name}
+                  {activeSection === item.href.substring(1) && (
+                    <motion.div
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500"
+                      layoutId="activeSection"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                </motion.a>
+              ))}
+            </div>
+
             <div className="flex items-center space-x-4">
+              <motion.a
+                href="https://lnbg.in/hashnode"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white text-sm"
+                variants={blogButtonVariants}
+                initial="initial"
+                animate="animate"
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <SiHashnode className="w-4 h-4" />
+                <span>Blogs</span>
+              </motion.a>
+
               <motion.button
                 onClick={toggleTheme}
-                initial={isDark ? 'dark' : 'light'}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-900/30 text-white"
+                variants={themeToggleVariants}
                 animate={isDark ? 'dark' : 'light'}
                 whileHover="hover"
-                variants={themeToggleVariants}
-                transition={{ duration: 0.5 }}
-                className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
-                aria-label="Toggle theme"
+                whileTap={{ scale: 0.9 }}
               >
-                <AnimatePresence mode="wait">
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.div
-                    key={isDark ? 'dark' : 'light'}
-                    initial={{ opacity: 0, rotate: -30, scale: 0.5 }}
-                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                    exit={{ opacity: 0, rotate: 30, scale: 0.5 }}
+                    key={isDark ? 'moon' : 'sun'}
+                    initial={{ opacity: 0, rotate: -180 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 180 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {isDark ? (
-                      <Sun className="w-5 h-5 text-content-dark" />
-                    ) : (
-                      <Moon className="w-5 h-5 text-content-light" />
-                    )}
+                    {isDark ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+                  </motion.div>
+                </AnimatePresence>
+              </motion.button>
+
+              {/* Mobile Menu Toggle */}
+              <motion.button
+                className="md:hidden flex items-center justify-center p-2 rounded-full bg-neutral-900/30 text-white relative z-[70]"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={isMenuOpen ? 'close' : 'menu'}
+                    initial={{ opacity: 0, rotate: -180 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 180 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                   </motion.div>
                 </AnimatePresence>
               </motion.button>
             </div>
           </div>
+        </nav>
+      </motion.header>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <motion.button
-              onClick={toggleTheme}
-              initial={isDark ? 'dark' : 'light'}
-              animate={isDark ? 'dark' : 'light'}
-              whileHover="hover"
-              variants={themeToggleVariants}
-              transition={{ duration: 0.3 }}
-              className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Toggle theme"
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={isDark ? 'dark' : 'light'}
-                  initial={{ opacity: 0, rotate: -30, scale: 0.5 }}
-                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                  exit={{ opacity: 0, rotate: 30, scale: 0.5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {isDark ? (
-                    <Sun className="w-5 h-5 text-content-dark" />
-                  ) : (
-                    <Moon className="w-5 h-5 text-content-light" />
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            </motion.button>
-            <motion.button
-              className="text-content-light dark:text-content-dark p-2 rounded-lg"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={isMenuOpen ? 'open' : 'closed'}
-                  initial={{ opacity: 0, rotate: -45, scale: 0.5 }}
-                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                  exit={{ opacity: 0, rotate: 45, scale: 0.5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </motion.div>
-              </AnimatePresence>
-            </motion.button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={mobileMenuVariants}
-              className="md:hidden absolute top-16 left-0 right-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 shadow-lg"
-            >
-              <div className="flex flex-col space-y-4 px-6 py-4">
+      {/* Mobile Navigation Menu - Outside header to avoid z-index conflicts */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-md z-[60]"
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={mobileMenuVariants}
+            onClick={e => {
+              if (e.target === e.currentTarget) {
+                setIsMenuOpen(false);
+              }
+            }}
+          >
+            <div className="container mx-auto px-6 py-24">
+              <div className="flex flex-col space-y-6">
                 {navItems.map((item, i) => (
                   <motion.a
                     key={i}
                     href={item.href}
                     variants={mobileItemVariants}
                     whileHover="hover"
-                    custom={i}
+                    className={`text-white/80 text-xl ${
+                      activeSection === item.href.substring(1) ? 'text-orange-500 font-bold' : ''
+                    }`}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark py-2 px-4 rounded-lg relative`}
-                    style={
-                      activeSection === item.href.substring(1)
-                        ? { color: isDark ? '#60a5fa' : '#2563eb' }
-                        : {}
-                    }
                   >
-                    <span className="relative">
-                      {item.name}
-                      {activeSection === item.href.substring(1) && (
-                        <motion.span
-                          className="absolute bottom-[-2px] left-0 h-[2px] bg-blue-500 dark:bg-blue-400"
-                          layoutId="mobileActiveSection"
-                          initial={{ width: 0 }}
-                          animate={{ width: '100%' }}
-                          transition={{ duration: 0.3 }}
-                        />
-                      )}
-                    </span>
+                    {item.name}
                   </motion.a>
                 ))}
                 <motion.a
-                  href="https://blogs.lnbg.in/"
+                  href="https://lnbg.in/hashnode"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-6 py-3 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white w-fit mt-4"
                   variants={mobileItemVariants}
-                  whileHover="hover"
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors text-center relative overflow-hidden group"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                  <span className="relative z-10 flex items-center justify-center">
-                    <SiHashnode className="inline-block mr-1 pb-[2px]" /> Blogs
-                  </span>
+                  <SiHashnode className="w-5 h-5" />
+                  <span>Blogs</span>
                 </motion.a>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-    </motion.header>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
