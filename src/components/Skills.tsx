@@ -1,19 +1,36 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaNodeJs, FaPython, FaAws, FaJsSquare, FaRaspberryPi } from 'react-icons/fa';
+import { FaJsSquare, FaRaspberryPi } from 'react-icons/fa';
+import { VscAzure } from 'react-icons/vsc';
+import { FaInfinity } from 'react-icons/fa6';
+import { ImFirefox } from 'react-icons/im';
+import { VscVscode } from 'react-icons/vsc';
 import {
   SiTypescript,
-  SiArduino,
   SiMongodb,
   SiPostgresql,
   SiExpress,
   SiEspressif,
-  SiDocker,
+  SiNextdotjs,
   SiTensorflow,
   SiTailwindcss,
   SiReact,
+  SiFastapi,
+  SiFastify,
+  SiDjango,
+  SiNodedotjs,
+  SiBun,
+  SiFlask,
+  SiDocker,
+  SiAmazonwebservices,
+  SiGooglecloud,
+  SiGit,
+  SiGithub,
+  SiMysql,
+  SiSqlite,
+  SiSqlalchemy,
+  SiNeo4J,
+  SiRedis,
 } from 'react-icons/si';
-import { RiNextjsFill } from 'react-icons/ri';
-import { VscAzure } from 'react-icons/vsc';
 import { useRef, useEffect, useState } from 'react';
 import AnimatedBackground from './AnimatedBackground';
 import { Code, Database, Palette, Server } from 'lucide-react';
@@ -36,25 +53,38 @@ const skills: SkillsData = {
     { name: 'JavaScript', icon: FaJsSquare, level: 90 },
     { name: 'TypeScript', icon: SiTypescript, level: 70 },
     { name: 'Tailwind CSS', icon: SiTailwindcss, level: 80 },
-    { name: 'React', icon: SiReact, level: 70 },
-    { name: 'Next.js', icon: RiNextjsFill, level: 90 },
+    { name: 'React', icon: SiReact, level: 80 },
+    { name: 'Next.js', icon: SiNextdotjs, level: 70 },
+    { name: 'Django', icon: SiDjango, level: 70 },
   ],
   backend: [
-    { name: 'Node.js', icon: FaNodeJs, level: 90 },
+    { name: 'Node.js', icon: SiNodedotjs, level: 90 },
+    { name: 'Bun', icon: SiBun, level: 70 },
     { name: 'Express.js', icon: SiExpress, level: 90 },
-    { name: 'Docker', icon: SiDocker, level: 60 },
-    { name: 'Python', icon: FaPython, level: 85 },
-    { name: 'REST APIs', icon: SiExpress, level: 85 },
+    { name: 'Fastify', icon: SiFastify, level: 60 },
+    { name: 'Flask', icon: SiFlask, level: 60 },
+    { name: 'FastAPI', icon: SiFastapi, level: 90 },
+    { name: 'ElysiaJS', icon: ImFirefox, level: 70 },
+  ],
+  devops: [
+    { name: 'AWS', icon: SiAmazonwebservices, level: 60 },
+    { name: 'Azure', icon: VscAzure, level: 50 },
+    { name: 'Google Cloud', icon: SiGooglecloud, level: 60 },
+    { name: 'Docker', icon: SiDocker, level: 80 },
+    { name: 'Git', icon: SiGit, level: 90 },
+    { name: 'GitHub', icon: SiGithub, level: 70 },
   ],
   database: [
-    { name: 'PostgreSQL', icon: SiPostgresql, level: 60 },
     { name: 'MongoDB', icon: SiMongodb, level: 90 },
-    { name: 'Firebase', icon: SiMongodb, level: 75 },
+    { name: 'MySQL', icon: SiMysql, level: 80 },
+    { name: 'PostgreSQL', icon: SiPostgresql, level: 60 },
+    { name: 'SQLite', icon: SiSqlite, level: 75 },
+    { name: 'SqlAlchemy', icon: SiSqlalchemy, level: 70 },
+    { name: 'Neo4j', icon: SiNeo4J, level: 70 },
+    { name: 'Redis', icon: SiRedis, level: 70 },
   ],
   tools: [
-    { name: 'AWS', icon: FaAws, level: 70 },
-    { name: 'Azure', icon: VscAzure, level: 60 },
-    { name: 'Arduino', icon: SiArduino, level: 100 },
+    { name: 'VS Code', icon: VscVscode, level: 100 },
     { name: 'Raspberry Pi', icon: FaRaspberryPi, level: 80 },
     { name: 'Espressif', icon: SiEspressif, level: 70 },
     { name: 'TensorFlow', icon: SiTensorflow, level: 70 },
@@ -65,17 +95,18 @@ const skills: SkillsData = {
 interface SkillCategory {
   id: string;
   name: string;
-  icon: React.ComponentType;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 const skillCategories: SkillCategory[] = [
   { id: 'frontend', name: 'Frontend', icon: Palette },
   { id: 'backend', name: 'Backend', icon: Server },
+  { id: 'devops', name: 'DevOps', icon: FaInfinity },
   { id: 'database', name: 'Database', icon: Database },
   { id: 'tools', name: 'Tools', icon: Code },
 ];
 
-const Technologies = () => {
+const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeSkillCategory, setActiveSkillCategory] = useState('frontend');
 
@@ -103,11 +134,9 @@ const Technologies = () => {
     };
   }, []);
 
-  // Simplified component - removed unused animation variants
-
   return (
     <motion.section
-      id="technologies"
+      id="skills"
       className="py-20 bg-black text-white relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -168,9 +197,9 @@ const Technologies = () => {
             animate={{ y: [0, -8, 0] }}
             className="text-4xl font-bold text-center text-white relative"
           >
-            My{' '}
+            Skills{' '}
             <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-              Skills
+              & Tech's
             </span>
             <motion.span
               className="absolute left-1/2 -bottom-3 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full"
@@ -277,4 +306,4 @@ const Technologies = () => {
   );
 };
 
-export default Technologies;
+export default Skills;

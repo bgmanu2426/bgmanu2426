@@ -1,20 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SiHashnode } from 'react-icons/si';
-import { useDarkMode } from '../hooks/useDarkMode';
 import AnimatedBackground from './AnimatedBackground';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useDarkMode();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [isDesktop, setIsDesktop] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +20,7 @@ const Header = () => {
       }
 
       // Determine which section is currently in view
-      const sections = ['about', 'projects', 'technologies', 'awards', 'contact'];
+      const sections = ['about', 'projects', 'skills', 'certification', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -63,8 +57,8 @@ const Header = () => {
   const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Technologies', href: '#technologies' },
-    { name: 'Awards', href: '#awards' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Certifications', href: '#certification' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -161,20 +155,6 @@ const Header = () => {
     active: {
       color: '#f97316',
       fontWeight: 'bold' as const,
-    },
-  };
-
-  const themeToggleVariants = {
-    light: { rotate: 0 },
-    dark: { rotate: 180 },
-    hover: {
-      scale: 1.1,
-      boxShadow: '0 0 15px rgba(249, 115, 22, 0.5)',
-      transition: {
-        duration: 0.3,
-        type: 'spring',
-        stiffness: 400,
-      },
     },
   };
 
@@ -302,7 +282,7 @@ const Header = () => {
 
             <div className="flex items-center space-x-4">
               <motion.a
-                href="https://lnbg.in/hashnode"
+                href="https://blogs.lnbg.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white text-sm"
@@ -315,27 +295,6 @@ const Header = () => {
                 <SiHashnode className="w-4 h-4" />
                 <span>Blogs</span>
               </motion.a>
-
-              <motion.button
-                onClick={toggleTheme}
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-900/30 text-white"
-                variants={themeToggleVariants}
-                animate={isDark ? 'dark' : 'light'}
-                whileHover="hover"
-                whileTap={{ scale: 0.9 }}
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={isDark ? 'moon' : 'sun'}
-                    initial={{ opacity: 0, rotate: -180 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 180 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {isDark ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-                  </motion.div>
-                </AnimatePresence>
-              </motion.button>
 
               {/* Mobile Menu Toggle */}
               <motion.button
@@ -393,7 +352,7 @@ const Header = () => {
                   </motion.a>
                 ))}
                 <motion.a
-                  href="https://lnbg.in/hashnode"
+                  href="https://blogs.lnbg.in/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 px-6 py-3 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white w-fit mt-4"

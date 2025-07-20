@@ -1,8 +1,8 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
-import Technologies from './components/Technologies';
-import Awards from './components/Awards';
+import Skills from './components/Skills';
+import Awards from './components/Certifications';
 import Contact from './components/Contact';
 
 function App() {
@@ -12,13 +12,24 @@ function App() {
       <main>
         <Hero />
         <Projects />
-        <Technologies />
+        <Skills />
         <Awards />
         <Contact />
       </main>
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto px-6 text-center">
-          <p>&copy; {new Date().getFullYear()} Manu BG. All rights reserved.</p>
+      <footer className="bg-black border-t border-neutral-800 py-12">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <div className="pt-6">
+              <p className="text-neutral-400">
+                &copy; {new Date().getFullYear()}{' '}
+                <span className="text-orange-400 font-semibold">Manu BG</span>. All rights reserved.
+              </p>
+              <p className="text-neutral-500 text-sm mt-2">
+                Made with <span className="text-red-500">❤️</span> and{' '}
+                <span className="text-orange-400">React</span>
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

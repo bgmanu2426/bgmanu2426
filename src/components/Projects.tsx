@@ -274,7 +274,7 @@ const Projects = () => {
           transition={{ duration: 0.7, delay: 0.5 }}
         >
           <motion.a
-            href="https://github.com/bgmanu2426"
+            href="https://github.com/bgmanu2426?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             initial="initial"

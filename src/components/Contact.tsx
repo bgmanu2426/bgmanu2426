@@ -82,7 +82,7 @@ const Contact = () => {
     hover: {
       scale: 1.2,
       rotate: [0, -10, 10, -10, 0],
-      boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)',
+      boxShadow: '0 0 15px rgba(251, 146, 60, 0.5)',
       transition: {
         duration: 0.5,
       },
@@ -91,12 +91,12 @@ const Contact = () => {
 
   const linkVariants = {
     initial: {
-      backgroundColor: 'rgba(59, 130, 246, 0)',
+      backgroundColor: 'rgba(251, 146, 60, 0)',
       scale: 1,
       y: 0,
     },
     hover: {
-      backgroundColor: 'rgba(59, 130, 246, 0.1)',
+      backgroundColor: 'rgba(251, 146, 60, 0.1)',
       scale: 1.02,
       y: -5,
       boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
@@ -110,13 +110,13 @@ const Contact = () => {
   return (
     <motion.section
       id="contact"
-      className="py-20 bg-background-light dark:bg-background-dark transition-colors duration-300 relative"
+      className="py-20 bg-black transition-colors duration-300 relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.3 }}
       ref={contactRef}
     >
-      <AnimatedBackground variant="gradient" opacity={0.07} />
+      <AnimatedBackground variant="dots" opacity={0.07} />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.h2
@@ -124,11 +124,14 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7 }}
-          className="text-4xl font-bold text-center mb-16 text-content-light dark:text-content-dark relative"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 text-white relative"
         >
-          Get in Touch
+          Get in{' '}
+          <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+            Touch
+          </span>
           <motion.span
-            className="absolute left-1/2 -bottom-3 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
+            className="absolute left-1/2 -bottom-3 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: '80px' }}
             viewport={{ once: true }}
@@ -147,10 +150,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Information */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <motion.h3
-                className="text-2xl font-bold mb-6 text-content-light dark:text-content-dark"
-                variants={itemVariants}
-              >
+              <motion.h3 className="text-2xl font-bold mb-6 text-white" variants={itemVariants}>
                 Contact Information
               </motion.h3>
               {contactInfo.map((item, index) => (
@@ -162,23 +162,23 @@ const Contact = () => {
                   initial="initial"
                   whileHover="hover"
                   variants={linkVariants}
-                  className="flex items-center group p-3 rounded-lg transition-all backdrop-blur-sm"
+                  className="flex items-center group p-3 rounded-lg transition-all backdrop-blur-sm bg-neutral-900/50 border border-neutral-800 hover:border-orange-500/50"
                 >
                   <motion.div
-                    className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary-dark/10 flex items-center justify-center mr-4 group-hover:bg-primary/20 dark:group-hover:bg-primary-dark/20 transition-colors"
+                    className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mr-4 group-hover:bg-orange-500/20 transition-colors"
                     variants={iconVariants}
                     whileHover="hover"
                     style={{
                       background:
-                        'linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(79, 70, 229, 0.1))',
+                        'linear-gradient(145deg, rgba(251, 146, 60, 0.1), rgba(239, 68, 68, 0.1))',
                     }}
                   >
                     <motion.div
                       whileHover={{
-                        filter: 'drop-shadow(0 0 5px rgba(59, 130, 246, 0.5))',
+                        filter: 'drop-shadow(0 0 5px rgba(251, 146, 60, 0.5))',
                       }}
                     >
-                      <item.icon className="w-6 h-6 text-primary dark:text-primary-light" />
+                      <item.icon className="w-6 h-6 text-orange-400" />
                     </motion.div>
                   </motion.div>
                   <motion.div
@@ -187,14 +187,14 @@ const Contact = () => {
                     transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
                   >
                     <motion.p
-                      className="text-sm text-gray-600 dark:text-gray-400"
+                      className="text-sm text-neutral-400"
                       whileHover={{ x: 3 }}
                       transition={{ duration: 0.2 }}
                     >
                       {item.label}
                     </motion.p>
                     <motion.p
-                      className="text-content-light dark:text-content-dark font-medium"
+                      className="text-white font-medium"
                       whileHover={{ x: 3 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -207,10 +207,7 @@ const Contact = () => {
 
             {/* Social Links */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <motion.h3
-                className="text-2xl font-bold mb-6 text-content-light dark:text-content-dark"
-                variants={itemVariants}
-              >
+              <motion.h3 className="text-2xl font-bold mb-6 text-white" variants={itemVariants}>
                 Social Media
               </motion.h3>
               {socialLinks.map((item, index) => (
@@ -222,26 +219,26 @@ const Contact = () => {
                   initial="initial"
                   whileHover="hover"
                   variants={linkVariants}
-                  className="flex items-center group p-3 rounded-lg transition-all backdrop-blur-sm"
+                  className="flex items-center group p-3 rounded-lg transition-all backdrop-blur-sm bg-neutral-900/50 border border-neutral-800 hover:border-orange-500/50"
                 >
                   <motion.div
-                    className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary-dark/10 flex items-center justify-center mr-4 group-hover:bg-primary/20 dark:group-hover:bg-primary-dark/20 transition-colors"
+                    className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mr-4 group-hover:bg-orange-500/20 transition-colors"
                     variants={iconVariants}
                     whileHover="hover"
                     style={{
                       background:
-                        'linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(79, 70, 229, 0.1))',
+                        'linear-gradient(145deg, rgba(251, 146, 60, 0.1), rgba(239, 68, 68, 0.1))',
                     }}
                   >
                     <motion.div
                       whileHover={{
-                        filter: 'drop-shadow(0 0 5px rgba(59, 130, 246, 0.5))',
+                        filter: 'drop-shadow(0 0 5px rgba(251, 146, 60, 0.5))',
                       }}
                     >
                       {typeof item.icon === 'function' ? (
-                        <item.icon className="w-6 h-6 text-primary dark:text-primary-light" />
+                        <item.icon className="w-6 h-6 text-orange-400" />
                       ) : (
-                        <MessageCircle className="w-6 h-6 text-primary dark:text-primary-light" />
+                        <MessageCircle className="w-6 h-6 text-orange-400" />
                       )}
                     </motion.div>
                   </motion.div>
@@ -251,7 +248,7 @@ const Contact = () => {
                     transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
                   >
                     <motion.p
-                      className="text-sm text-gray-600 dark:text-gray-400"
+                      className="text-sm text-neutral-400"
                       whileHover={{ x: 3 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -259,7 +256,7 @@ const Contact = () => {
                     </motion.p>
                     {item.value && (
                       <motion.p
-                        className="text-content-light dark:text-content-dark font-medium"
+                        className="text-white font-medium"
                         whileHover={{ x: 3 }}
                         transition={{ duration: 0.2 }}
                       >

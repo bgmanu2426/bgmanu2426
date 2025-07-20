@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Award, Calendar } from 'lucide-react';
 import AnimatedBackground from './AnimatedBackground';
 
-const awards = [
+const certification = [
   {
     title: 'Github Foundations',
     organization: 'GitHub',
@@ -41,7 +41,7 @@ const awards = [
   },
 ];
 
-const Awards = () => {
+const Certifications = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -91,7 +91,7 @@ const Awards = () => {
     hover: {
       scale: 1.2,
       rotate: 10,
-      filter: 'drop-shadow(0 0 10px rgba(59, 130, 246, 0.5))',
+      filter: 'drop-shadow(0 0 10px rgba(251, 146, 60, 0.5))',
       transition: {
         duration: 0.4,
       },
@@ -107,8 +107,8 @@ const Awards = () => {
 
   return (
     <motion.section
-      id="awards"
-      className="py-20 bg-background-light dark:bg-background-dark transition-colors duration-300 relative"
+      id="certification"
+      className="py-20 bg-black transition-colors duration-300 relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
@@ -121,11 +121,14 @@ const Awards = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7 }}
-          className="text-4xl font-bold text-center mb-16 text-content-light dark:text-content-dark relative"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 text-white relative"
         >
-          Awards & Certifications
+          Awards &{' '}
+          <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+            Certifications
+          </span>
           <motion.span
-            className="absolute left-1/2 -bottom-3 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
+            className="absolute left-1/2 -bottom-3 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: '120px' }}
             viewport={{ once: true }}
@@ -140,17 +143,17 @@ const Awards = () => {
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
         >
-          {awards.map((award, index) => (
+          {certification.map((award, index) => (
             <motion.div
               key={index}
               custom={index}
               variants={cardVariants}
               whileHover="hover"
-              className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl p-6 shadow-lg transform-gpu flex flex-col h-full relative overflow-hidden"
+              className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 shadow-lg transform-gpu flex flex-col h-full relative overflow-hidden hover:border-orange-500/50 transition-all duration-300"
             >
               {/* Subtle gradient overlay that appears on hover */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0"
+                className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-red-500/5 opacity-0"
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -158,7 +161,7 @@ const Awards = () => {
 
               {/* Animated corner accent */}
               <motion.div
-                className="absolute -top-10 -right-10 w-20 h-20 bg-blue-500/10 rounded-full"
+                className="absolute -top-10 -right-10 w-20 h-20 bg-orange-500/10 rounded-full"
                 whileHover={{ scale: 1.5 }}
                 transition={{ duration: 0.5 }}
               />
@@ -168,24 +171,24 @@ const Awards = () => {
                   <img
                     src={award.badge}
                     alt={`${award.title} badge`}
-                    className="w-16 h-16 object-contain rounded-full shadow-md bg-white/50 p-1"
+                    className="w-16 h-16 object-contain rounded-full shadow-md bg-neutral-800/50 p-1"
                   />
                 </motion.div>
                 <div className="flex-1">
                   <motion.h3
-                    className="text-xl font-bold mb-2 text-content-light dark:text-content-dark"
+                    className="text-xl font-bold mb-2 text-white"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
                     whileHover={{
                       scale: 1.02,
-                      textShadow: '0 0 5px rgba(59, 130, 246, 0.3)',
+                      textShadow: '0 0 5px rgba(251, 146, 60, 0.3)',
                     }}
                   >
                     {award.title}
                   </motion.h3>
                   <motion.div
-                    className="flex items-center text-gray-600 dark:text-gray-400 mb-2"
+                    className="flex items-center text-neutral-300 mb-2"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
@@ -195,7 +198,7 @@ const Awards = () => {
                     <span>{award.organization}</span>
                   </motion.div>
                   <motion.div
-                    className="flex items-center text-gray-600 dark:text-gray-400"
+                    className="flex items-center text-neutral-300"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
@@ -214,7 +217,7 @@ const Awards = () => {
                 whileHover={{ opacity: 0.3, scale: 1, rotate: 45 }}
                 transition={{ duration: 0.5 }}
               >
-                <Award className="w-full h-full text-blue-500" />
+                <Award className="w-full h-full text-orange-500" />
               </motion.div>
             </motion.div>
           ))}
@@ -224,4 +227,4 @@ const Awards = () => {
   );
 };
 
-export default Awards;
+export default Certifications;
