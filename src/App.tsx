@@ -4,6 +4,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Awards from './components/Certifications';
 import Contact from './components/Contact';
+import AnimatedBackground from './components/AnimatedBackground';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Awards />
         <Contact />
       </main>
-      <footer className="bg-black border-t border-neutral-800 py-12">
+      <footer className="bg-black py-6">
+        <AnimatedBackground variant="orange-glow" />
         <div className="container mx-auto px-6">
           <div className="text-center">
             <div className="pt-6">

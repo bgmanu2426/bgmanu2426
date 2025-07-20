@@ -113,7 +113,7 @@ const Certifications = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <AnimatedBackground variant="dots" opacity={0.05} />
+      <AnimatedBackground variant="orange-glow" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.h2

@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaJsSquare, FaRaspberryPi } from 'react-icons/fa';
+import { FaJsSquare, FaCloud } from 'react-icons/fa';
 import { VscAzure } from 'react-icons/vsc';
-import { FaInfinity } from 'react-icons/fa6';
 import { ImFirefox } from 'react-icons/im';
 import { VscVscode } from 'react-icons/vsc';
+import { RiToolsFill } from 'react-icons/ri';
 import {
   SiTypescript,
   SiMongodb,
@@ -11,7 +11,6 @@ import {
   SiExpress,
   SiEspressif,
   SiNextdotjs,
-  SiTensorflow,
   SiTailwindcss,
   SiReact,
   SiFastapi,
@@ -30,6 +29,12 @@ import {
   SiSqlalchemy,
   SiNeo4J,
   SiRedis,
+  SiGooglegemini,
+  SiLangchain,
+  SiHuggingface,
+  SiArduino,
+  SiSmartthings,
+  SiRaspberrypi,
 } from 'react-icons/si';
 import { useRef, useEffect, useState } from 'react';
 import AnimatedBackground from './AnimatedBackground';
@@ -66,12 +71,11 @@ const skills: SkillsData = {
     { name: 'FastAPI', icon: SiFastapi, level: 90 },
     { name: 'ElysiaJS', icon: ImFirefox, level: 70 },
   ],
-  devops: [
+  cloud: [
     { name: 'AWS', icon: SiAmazonwebservices, level: 60 },
     { name: 'Azure', icon: VscAzure, level: 50 },
     { name: 'Google Cloud', icon: SiGooglecloud, level: 60 },
     { name: 'Docker', icon: SiDocker, level: 80 },
-    { name: 'Git', icon: SiGit, level: 90 },
     { name: 'GitHub', icon: SiGithub, level: 70 },
   ],
   database: [
@@ -83,11 +87,21 @@ const skills: SkillsData = {
     { name: 'Neo4j', icon: SiNeo4J, level: 70 },
     { name: 'Redis', icon: SiRedis, level: 70 },
   ],
+  iiot: [
+    { name: 'Arduino', icon: SiArduino, level: 90 },
+    { name: 'Espressif', icon: SiEspressif, level: 80 },
+    { name: 'Raspberry Pi', icon: SiRaspberrypi, level: 70 },
+  ],
+  genai: [
+    { name: 'LangChain', icon: SiLangchain, level: 80 },
+    { name: 'LangGraph', icon: SiLangchain, level: 80 },
+    { name: 'LangSmith', icon: RiToolsFill, level: 70 },
+    { name: 'LangFuse', icon: SiLangchain, level: 70 },
+    { name: 'HuggingFace', icon: SiHuggingface, level: 80 },
+  ],
   tools: [
     { name: 'VS Code', icon: VscVscode, level: 100 },
-    { name: 'Raspberry Pi', icon: FaRaspberryPi, level: 80 },
-    { name: 'Espressif', icon: SiEspressif, level: 70 },
-    { name: 'TensorFlow', icon: SiTensorflow, level: 70 },
+    { name: 'Git', icon: SiGit, level: 90 },
   ],
 };
 
@@ -101,8 +115,10 @@ interface SkillCategory {
 const skillCategories: SkillCategory[] = [
   { id: 'frontend', name: 'Frontend', icon: Palette },
   { id: 'backend', name: 'Backend', icon: Server },
-  { id: 'devops', name: 'DevOps', icon: FaInfinity },
   { id: 'database', name: 'Database', icon: Database },
+  { id: 'cloud', name: 'Cloud', icon: FaCloud },
+  { id: 'iiot', name: 'IIoT', icon: SiSmartthings },
+  { id: 'genai', name: 'GenAI', icon: SiGooglegemini },
   { id: 'tools', name: 'Tools', icon: Code },
 ];
 

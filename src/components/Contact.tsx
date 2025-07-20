@@ -116,7 +116,22 @@ const Contact = () => {
       transition={{ duration: 0.5, delay: 0.3 }}
       ref={contactRef}
     >
-      <AnimatedBackground variant="dots" opacity={0.07} />
+      <AnimatedBackground variant="orange-glow" />
+
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 text-orange-400/20 text-4xl font-mono animate-bounce delay-300">
+          {'<>'}
+        </div>
+        <div className="absolute top-40 right-20 text-blue-400/20 text-3xl font-mono animate-bounce delay-700">
+          {'{}'}
+        </div>
+        <div className="absolute bottom-40 left-20 text-green-400/20 text-5xl font-mono animate-bounce delay-1000">
+          {'[]'}
+        </div>
+        <div className="absolute bottom-20 right-40 text-purple-400/20 text-2xl font-mono animate-bounce delay-1500">
+          {'()'}
+        </div>
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.h2
