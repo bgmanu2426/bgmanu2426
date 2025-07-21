@@ -123,18 +123,17 @@ const Certifications = () => {
           transition={{ duration: 0.7 }}
           className="text-4xl md:text-5xl font-bold text-center mb-16 text-white relative"
         >
-          Awards &{' '}
           <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
             Certifications
           </span>
-          <motion.span
+          {/* <motion.span
             className="absolute left-1/2 -bottom-3 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: '120px' }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.7 }}
             style={{ x: '-50%' }}
-          />
+          /> */}
         </motion.h2>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"

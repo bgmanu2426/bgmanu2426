@@ -1,16 +1,21 @@
 import { ArrowRight, Download } from 'lucide-react';
-import Typewriter from 'typewriter-effect';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import { lazy, Suspense } from 'react';
 import AnimatedBackground from './AnimatedBackground';
 
+// Lazy load the typewriter component
+const Typewriter = lazy(() => import('typewriter-effect'));
+
 const Hero = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
+        delayChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
@@ -20,7 +25,7 @@ const Hero = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: [0.6, 0.05, 0.01, 0.99] },
+      transition: { duration: 0.4, ease: [0.6, 0.05, 0.01, 0.99] },
     },
   };
 
@@ -30,11 +35,11 @@ const Hero = () => {
       boxShadow: '0px 0px 0px rgba(0, 0, 0, 0)',
     },
     hover: {
-      scale: 1.05,
-      boxShadow: '0px 10px 20px rgba(249, 115, 22, 0.2)',
-      transition: { duration: 0.3, type: 'spring', stiffness: 400 },
+      scale: 1.03,
+      boxShadow: '0px 8px 16px rgba(249, 115, 22, 0.2)',
+      transition: { duration: 0.2, type: 'spring', stiffness: 400 },
     },
-    tap: { scale: 0.95 },
+    tap: { scale: 0.98 },
   };
 
   const outlineButtonVariants = {
@@ -44,12 +49,12 @@ const Hero = () => {
       backgroundColor: 'rgba(249, 115, 22, 0)',
     },
     hover: {
-      scale: 1.05,
-      boxShadow: '0px 5px 15px rgba(249, 115, 22, 0.3)',
+      scale: 1.03,
+      boxShadow: '0px 4px 12px rgba(249, 115, 22, 0.3)',
       backgroundColor: 'rgba(249, 115, 22, 0.1)',
-      transition: { duration: 0.3, type: 'spring', stiffness: 400 },
+      transition: { duration: 0.2, type: 'spring', stiffness: 400 },
     },
-    tap: { scale: 0.95 },
+    tap: { scale: 0.98 },
   };
 
   const emojiVariants = {
@@ -61,34 +66,40 @@ const Hero = () => {
         type: 'spring',
         stiffness: 260,
         damping: 20,
-        delay: 0.6,
+        delay: 0.4,
       },
     },
   };
 
-  const floatingAnimation = {
-    y: [0, -10, 0],
-    transition: {
-      duration: 1,
-      repeat: Infinity,
-      repeatType: 'loop' as const,
-      ease: 'easeInOut',
-    },
-  };
+  // Simplified floating animation
+  const floatingAnimation = shouldReduceMotion
+    ? {}
+    : {
+        y: [0, -8, 0],
+        transition: {
+          duration: 2,
+          repeat: Infinity,
+          repeatType: 'loop' as const,
+          ease: 'easeInOut',
+        },
+      };
 
-  const glowEffect = {
-    initial: {
-      filter: 'drop-shadow(0px 0px 0px rgba(249, 115, 22, 0))',
-    },
-    animate: {
-      filter: 'drop-shadow(0px 0px 10px rgba(249, 115, 22, 0.5))',
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: 'reverse' as const,
-      },
-    },
-  };
+  // Simplified glow effect
+  const glowEffect = shouldReduceMotion
+    ? {}
+    : {
+        initial: {
+          filter: 'drop-shadow(0px 0px 0px rgba(249, 115, 22, 0))',
+        },
+        animate: {
+          filter: 'drop-shadow(0px 0px 8px rgba(249, 115, 22, 0.4))',
+          transition: {
+            duration: 3,
+            repeat: Infinity,
+            repeatType: 'reverse' as const,
+          },
+        },
+      };
 
   return (
     <section
@@ -114,18 +125,18 @@ const Hero = () => {
                 className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent relative inline-block hover:cursor-pointer"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
                 whileHover={{
-                  scale: 1.05,
-                  textShadow: '0px 0px 8px rgba(249, 115, 22, 0.5)',
+                  scale: 1.03,
+                  textShadow: '0px 0px 6px rgba(249, 115, 22, 0.4)',
                 }}
               >
                 Lakshminarayana
                 <motion.span
-                  className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: '100%' }}
-                  transition={{ delay: 0.8, duration: 0.7 }}
+                  transition={{ delay: 0.6, duration: 0.5 }}
                 />
               </motion.span>
             </motion.h1>
@@ -133,21 +144,23 @@ const Hero = () => {
               className="text-3xl text-gray-300 mb-8 leading-relaxed"
               variants={itemVariants}
             >
-              <Typewriter
-                options={{
-                  strings: [
-                    'Full Stack Development',
-                    'Industrial Internet of Things',
-                    'Generative AI',
-                    'Cloud Computing',
-                    'AI & ML',
-                  ],
-                  autoStart: true,
-                  loop: true,
-                  delay: 75,
-                  deleteSpeed: 50,
-                }}
-              />
+              <Suspense fallback={<div className="h-8 bg-gray-700 animate-pulse rounded"></div>}>
+                <Typewriter
+                  options={{
+                    strings: [
+                      'Full Stack Development',
+                      'Industrial Internet of Things',
+                      'Generative AI',
+                      'Cloud Computing',
+                      'AI & ML',
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    delay: 60,
+                    deleteSpeed: 40,
+                  }}
+                />
+              </Suspense>
             </motion.div>
             <motion.p
               className="text-xl text-gray-300 mb-8 leading-relaxed"
@@ -169,9 +182,9 @@ const Hero = () => {
                 View Projects
                 <motion.div
                   initial={{ x: 0 }}
-                  whileHover={{ x: 5 }}
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, repeatDelay: 2 }}
+                  whileHover={{ x: 3 }}
+                  animate={shouldReduceMotion ? {} : { x: [0, 3, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.2, repeatDelay: 2 }}
                 >
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </motion.div>
@@ -187,8 +200,8 @@ const Hero = () => {
               >
                 Download CV
                 <motion.div
-                  animate={{ y: [0, -3, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
+                  animate={shouldReduceMotion ? {} : { y: [0, -2, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity }}
                 >
                   <Download className="ml-2 w-4 h-4" />
                 </motion.div>
@@ -205,51 +218,55 @@ const Hero = () => {
               variants={emojiVariants}
               initial="initial"
               animate="animate"
-              style={{ filter: 'drop-shadow(0px 0px 10px rgba(249, 115, 22, 0.3))' }}
+              style={{ filter: 'drop-shadow(0px 0px 8px rgba(249, 115, 22, 0.3))' }}
             >
               <motion.span initial="initial" animate="animate" variants={glowEffect}>
                 👨‍💻
               </motion.span>
             </motion.span>
 
-            {/* Animated rings around the emoji */}
-            <motion.div
-              className="absolute rounded-full border-2 border-orange-500/20"
-              initial={{ width: 100, height: 100, opacity: 0 }}
-              animate={{
-                width: [100, 200],
-                height: [100, 200],
-                opacity: [0, 0.5, 0],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 3,
-                ease: 'easeOut',
-              }}
-              style={{ top: 'calc(50% - 50px)', left: 'calc(50% - 50px)' }}
-            />
+            {/* Simplified animated rings */}
+            {!shouldReduceMotion && (
+              <>
+                <motion.div
+                  className="absolute rounded-full border-2 border-orange-500/20"
+                  initial={{ width: 100, height: 100, opacity: 0 }}
+                  animate={{
+                    width: [100, 180],
+                    height: [100, 180],
+                    opacity: [0, 0.4, 0],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 2.5,
+                    ease: 'easeOut',
+                  }}
+                  style={{ top: 'calc(50% - 50px)', left: 'calc(50% - 50px)' }}
+                />
 
-            <motion.div
-              className="absolute rounded-full border-2 border-red-500/20"
-              initial={{ width: 100, height: 100, opacity: 0 }}
-              animate={{
-                width: [100, 300],
-                height: [100, 300],
-                opacity: [0, 0.5, 0],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 4,
-                ease: 'easeOut',
-                delay: 1,
-              }}
-              style={{ top: 'calc(50% - 50px)', left: 'calc(50% - 50px)' }}
-            />
+                <motion.div
+                  className="absolute rounded-full border-2 border-red-500/20"
+                  initial={{ width: 100, height: 100, opacity: 0 }}
+                  animate={{
+                    width: [100, 250],
+                    height: [100, 250],
+                    opacity: [0, 0.4, 0],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: 'easeOut',
+                    delay: 0.8,
+                  }}
+                  style={{ top: 'calc(50% - 50px)', left: 'calc(50% - 50px)' }}
+                />
+              </>
+            )}
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Floating Code Elements */}
+      {/* Simplified floating code elements with CSS animations */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 text-orange-400/20 text-4xl font-mono animate-bounce delay-300">
           {'<>'}
@@ -265,27 +282,19 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Animated particles in the background */}
+      {/* Simplified particles with CSS animations */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
+        {[...Array(4)].map((_, i) => (
+          <div
             key={i}
-            className="absolute rounded-full bg-orange-400/10 dark:bg-orange-500/20"
-            initial={{
-              x: `${Math.random() * 100}%`,
-              y: `${Math.random() * 100}%`,
-              width: 10 + Math.random() * 40,
-              height: 10 + Math.random() * 40,
-            }}
-            animate={{
-              x: `${Math.random() * 100}%`,
-              y: `${Math.random() * 100}%`,
-              opacity: [0.4, 0.8, 0.4],
-            }}
-            transition={{
-              duration: 10 + Math.random() * 20,
-              repeat: Infinity,
-              repeatType: 'reverse',
+            className="absolute rounded-full bg-orange-400/10 dark:bg-orange-500/20 animate-pulse"
+            style={{
+              left: `${20 + i * 20}%`,
+              top: `${30 + i * 15}%`,
+              width: `${20 + i * 10}px`,
+              height: `${20 + i * 10}px`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + i}s`,
             }}
           />
         ))}

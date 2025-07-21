@@ -1,10 +1,27 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 
 type AnimatedBackgroundProps = {
   variant?: 'default' | 'gradient' | 'dots' | 'waves' | 'orange-glow';
   opacity?: number;
   className?: string;
+};
+
+// Throttle function for performance
+const throttle = <T extends (...args: unknown[]) => void>(
+  func: T,
+  limit: number
+): ((...args: Parameters<T>) => void) => {
+  let inThrottle = false;
+  return function (this: unknown, ...args: Parameters<T>) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => {
+        inThrottle = false;
+      }, limit);
+    }
+  };
 };
 
 const AnimatedBackground = ({
@@ -14,83 +31,96 @@ const AnimatedBackground = ({
 }: AnimatedBackgroundProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    throttle((event: MouseEvent) => {
       setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
+        x: event.clientX,
+        y: event.clientY,
       });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    }, 16)(e);
   }, []);
 
-  if (variant === 'orange-glow') {
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [handleMouseMove]);
+
+  // Memoize expensive calculations
+  const glowElements = useMemo(() => {
+    if (variant !== 'orange-glow') return null;
+
     return (
-      <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-        {/* Main glows */}
+      <>
+        {/* Optimized main glows with reduced complexity */}
         <motion.div
           className="absolute top-1/4 -left-20 w-96 h-96 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full blur-3xl"
           animate={{
-            x: [0, 50, -20, 50, 0],
-            y: [0, -50, 30, -40, 0],
-            scale: [1, 1.1, 0.9, 1.2, 1],
+            x: [0, 30, -10, 30, 0],
+            y: [0, -30, 20, -25, 0],
+            scale: [1, 1.05, 0.95, 1.1, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             repeat: Infinity,
             repeatType: 'reverse',
+            ease: 'easeInOut',
           }}
         />
         <motion.div
           className="absolute bottom-1/4 right-0 w-80 h-80 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full blur-3xl"
           animate={{
-            x: [0, -40, 20, -30, 0],
-            y: [0, 30, -40, 20, 0],
-            scale: [1, 0.9, 1.1, 0.8, 1],
+            x: [0, -25, 15, -20, 0],
+            y: [0, 20, -25, 15, 0],
+            scale: [1, 0.95, 1.05, 0.9, 1],
           }}
           transition={{
-            duration: 15,
+            duration: 12,
             repeat: Infinity,
             repeatType: 'mirror',
-            delay: 3,
+            delay: 2,
+            ease: 'easeInOut',
           }}
         />
 
-        {/* Subtle accent glows */}
+        {/* Simplified accent glow */}
         <motion.div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.5, 0.8, 0.5],
+            scale: [1, 1.3, 1],
+            opacity: [0.5, 0.7, 0.5],
           }}
           transition={{
-            duration: 8,
+            duration: 6,
             repeat: Infinity,
             repeatType: 'reverse',
+            ease: 'easeInOut',
           }}
         />
 
-        {/* Mouse follow subtle glow */}
+        {/* Optimized mouse follow glow */}
         <motion.div
           className="w-96 h-96 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-full blur-3xl absolute"
           animate={{
-            x: mousePosition.x - 192, // Half the width
-            y: mousePosition.y - 192, // Half the height
+            x: mousePosition.x - 192,
+            y: mousePosition.y - 192,
           }}
           transition={{
             type: 'spring',
-            damping: 20,
-            stiffness: 60,
-            mass: 1,
+            damping: 25,
+            stiffness: 80,
+            mass: 0.8,
           }}
         />
+      </>
+    );
+  }, [variant, mousePosition]);
 
-        {/* Grid background */}
+  if (variant === 'orange-glow') {
+    return (
+      <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+        {glowElements}
+
+        {/* Static grid background - no animation needed */}
         <div
           className="absolute inset-0"
           style={{
@@ -101,7 +131,7 @@ const AnimatedBackground = ({
           }}
         />
 
-        {/* Overlay gradient */}
+        {/* Static overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20" />
       </div>
     );
@@ -133,7 +163,7 @@ const AnimatedBackground = ({
             animate={{ y: [20, 15, 20] }}
             transition={{
               repeat: Infinity,
-              duration: 10,
+              duration: 8,
               ease: 'easeInOut',
             }}
           />
@@ -144,7 +174,7 @@ const AnimatedBackground = ({
             animate={{ y: [20, 10, 20] }}
             transition={{
               repeat: Infinity,
-              duration: 8,
+              duration: 6,
               ease: 'easeInOut',
             }}
           />
@@ -159,19 +189,19 @@ const AnimatedBackground = ({
         className={`absolute inset-0 overflow-hidden bg-gradient-to-br from-blue-500/5 to-indigo-500/5 pointer-events-none ${className}`}
         animate={{
           background: [
-            'radial-gradient(circle at calc(50% + 200px) calc(50% - 200px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
-            'radial-gradient(circle at calc(50% - 200px) calc(50% + 200px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
-            'radial-gradient(circle at calc(50% + 200px) calc(50% + 200px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
-            'radial-gradient(circle at calc(50% - 200px) calc(50% - 200px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
-            'radial-gradient(circle at calc(50% + 200px) calc(50% - 200px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
+            'radial-gradient(circle at calc(50% + 150px) calc(50% - 150px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
+            'radial-gradient(circle at calc(50% - 150px) calc(50% + 150px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
+            'radial-gradient(circle at calc(50% + 150px) calc(50% + 150px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
+            'radial-gradient(circle at calc(50% - 150px) calc(50% - 150px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
+            'radial-gradient(circle at calc(50% + 150px) calc(50% - 150px), rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0) 50%)',
           ],
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
       />
     );
   }
 
-  // Default subtle moving gradient
+  // Default subtle moving gradient - optimized
   return (
     <motion.div
       className={`absolute inset-0 pointer-events-none ${className}`}

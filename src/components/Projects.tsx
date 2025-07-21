@@ -1,6 +1,6 @@
 import { LuGithub, LuEye } from 'react-icons/lu';
-import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import AnimatedBackground from './AnimatedBackground';
 
@@ -58,9 +58,37 @@ const projects = [
   },
 ];
 
+// Intersection Observer Hook
+const useIntersectionObserver = (options = {}) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [ref, setRef] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!ref) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting);
+    }, options);
+
+    observer.observe(ref);
+
+    return () => {
+      if (ref) {
+        observer.unobserve(ref);
+      }
+    };
+  }, [ref, options]);
+
+  return [setRef, isIntersecting] as const;
+};
+
 const Projects = () => {
   const [animationParent] = useAutoAnimate();
-  const containerRef = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [containerRef2, isVisible] = useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+  });
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -68,195 +96,146 @@ const Projects = () => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1,
-        duration: 0.5,
+        delay: shouldReduceMotion ? 0 : i * 0.1,
+        duration: 0.4,
         ease: 'easeOut',
       },
     }),
-    hover: {
-      scale: 1.05,
-      y: -10,
-      border: '1px solid rgba(249, 115, 22, 0.5)',
-      boxShadow: '0 20px 30px -10px rgba(249, 115, 22, 0.1)',
-      transition: { duration: 0.3, type: 'spring', stiffness: 300 },
-    },
+    hover: shouldReduceMotion
+      ? {}
+      : {
+          scale: 1.02,
+          y: -5,
+          border: '1px solid rgba(249, 115, 22, 0.5)',
+          boxShadow: '0 15px 25px -10px rgba(249, 115, 22, 0.1)',
+          transition: { duration: 0.2, type: 'spring', stiffness: 300 },
+        },
   };
 
   const imageVariants = {
     initial: { scale: 1 },
-    hover: {
-      scale: 1.1,
-      filter: 'brightness(1.1) contrast(1.05)',
-      transition: { duration: 0.4 },
-    },
+    hover: shouldReduceMotion
+      ? {}
+      : {
+          scale: 1.05,
+          filter: 'brightness(1.05) contrast(1.02)',
+          transition: { duration: 0.3 },
+        },
   };
 
   const buttonVariants = {
     initial: { y: 0, scale: 1 },
-    hover: {
-      y: -3,
-      scale: 1.05,
-      boxShadow: '0 5px 15px -5px rgba(0, 0, 0, 0.3)',
-      transition: { duration: 0.2, type: 'spring', stiffness: 400 },
-    },
-    tap: {
-      scale: 0.95,
-      boxShadow: '0 0px 5px -2px rgba(0, 0, 0, 0.2)',
-    },
+    hover: shouldReduceMotion
+      ? {}
+      : {
+          y: -2,
+          scale: 1.03,
+          boxShadow: '0 4px 12px -5px rgba(0, 0, 0, 0.3)',
+          transition: { duration: 0.15, type: 'spring', stiffness: 400 },
+        },
   };
 
-  const tagVariants = {
-    initial: {
-      backgroundColor: 'rgba(31, 41, 55, 0.5)',
-      color: '#d1d5db',
-      scale: 1,
-    },
-    hover: {
-      backgroundColor: '#f97316',
-      color: '#ffffff',
-      scale: 1.05,
-      y: -2,
-      transition: { duration: 0.2 },
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.1,
+        staggerChildren: 0.1,
+      },
     },
   };
 
   return (
-    <motion.section
-      id="projects"
-      className="py-20 bg-black text-white relative overflow-hidden"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.1 }}
-    >
-      {/* Background Animation */}
-      <AnimatedBackground variant="orange-glow" />
+    <section id="projects" className="py-20 bg-black text-white relative overflow-hidden">
+      <AnimatedBackground variant="gradient" opacity={0.02} />
 
-      {/* Floating Code Elements */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 text-orange-400/20 text-4xl font-mono animate-bounce delay-300">
-          {'<>'}
-        </div>
-        <div className="absolute top-40 right-20 text-blue-400/20 text-3xl font-mono animate-bounce delay-700">
-          {'{}'}
-        </div>
-        <div className="absolute bottom-40 left-20 text-green-400/20 text-5xl font-mono animate-bounce delay-1000">
-          {'[]'}
-        </div>
-        <div className="absolute bottom-20 right-40 text-purple-400/20 text-2xl font-mono animate-bounce delay-1500">
-          {'()'}
-        </div>
-      </div>
-
-      <motion.div className="container mx-auto px-6 relative z-10" ref={containerRef}>
-        <motion.h2
+      <motion.div
+        ref={containerRef2}
+        className="container mx-auto px-6 relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isVisible ? 'visible' : 'hidden'}
+      >
+        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl font-bold text-center mb-16"
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
         >
-          Featured{' '}
-          <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-            Projects
-          </span>
-          <motion.span
-            className="block mx-auto mt-4 h-1 w-24 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"
-            initial={{ width: 0 }}
-            whileInView={{ width: '6rem' }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-          />
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={animationParent}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            My <span className="gradient-text">Projects</span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Here are some of the projects I've worked on, showcasing my skills in full-stack
+            development, IoT, and AI/ML technologies.
+          </p>
+        </motion.div>
+
+        <div ref={animationParent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
-              whileHover="hover"
-              viewport={{ once: true, margin: '-50px' }}
+              key={project.title}
+              className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 hover:border-orange-500/50 transition-colors duration-300"
               variants={cardVariants}
-              className="group bg-neutral-900/50 border border-neutral-800 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:border-orange-500/50"
+              custom={index}
+              whileHover="hover"
+              initial="hidden"
+              animate={isVisible ? 'visible' : 'hidden'}
             >
-              <div className="overflow-hidden">
-                <motion.div
+              <div className="relative overflow-hidden">
+                <motion.img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-48 object-cover"
+                  variants={imageVariants}
                   initial="initial"
                   whileHover="hover"
-                  className="w-full h-48 overflow-hidden"
-                >
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    variants={imageVariants}
-                    className="w-full h-48 object-cover transition-transform"
-                  />
-                </motion.div>
-              </div>
-              <div className="p-6 flex flex-col flex-grow relative">
-                {/* Subtle background glow effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br opacity-0 rounded-xl"
-                  style={{
-                    backgroundImage:
-                      'radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.15), transparent 70%)',
-                  }}
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 0.8 }}
-                  transition={{ duration: 0.5 }}
+                  loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              </div>
 
-                <motion.h3
-                  className="text-xl font-bold mb-2 text-white relative z-10"
-                  initial={{ y: 0 }}
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {project.title}
-                </motion.h3>
-                <p className="text-gray-300 mb-4 flex-grow relative z-10">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4 relative z-10">
-                  {project.tech.map((tech, i) => (
-                    <motion.span
-                      key={i}
-                      initial="initial"
-                      whileHover="hover"
-                      variants={tagVariants}
-                      className="px-3 py-1 rounded-full text-sm transition-colors"
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-white">{project.title}</h3>
+                <p className="text-gray-300 mb-4 line-clamp-3">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map(tech => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-orange-500/10 text-orange-400 text-sm rounded-full border border-orange-500/20"
                     >
                       {tech}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
-                <div className="flex space-x-4 mt-auto relative z-10">
-                  {project.github && (
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial="initial"
-                      whileHover="hover"
-                      whileTap="tap"
-                      variants={buttonVariants}
-                      className="inline-flex items-center justify-center px-4 py-2 border border-neutral-600 hover:border-orange-500 text-neutral-300 hover:text-orange-400 rounded-lg font-semibold transition-all duration-300"
-                    >
-                      <LuGithub className="w-5 h-5 mr-2" />
-                      Code
-                    </motion.a>
-                  )}
+
+                <div className="flex gap-3">
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200"
+                    variants={buttonVariants}
+                    initial="initial"
+                    whileHover="hover"
+                  >
+                    <LuGithub className="w-4 h-4" />
+                    Code
+                  </motion.a>
                   {project.demo && (
                     <motion.a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors duration-200"
+                      variants={buttonVariants}
                       initial="initial"
                       whileHover="hover"
-                      whileTap="tap"
-                      variants={buttonVariants}
-                      className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-lg font-semibold transition-all duration-300"
                     >
-                      <LuEye className="w-5 h-5 mr-2" />
-                      Live Demo
+                      <LuEye className="w-4 h-4" />
+                      Demo
                     </motion.a>
                   )}
                 </div>
@@ -264,45 +243,8 @@ const Projects = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* View All Projects button */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-        >
-          <motion.a
-            href="https://github.com/bgmanu2426?tab=repositories"
-            target="_blank"
-            rel="noopener noreferrer"
-            initial="initial"
-            whileHover="hover"
-            whileTap="tap"
-            variants={buttonVariants}
-            className="group inline-flex items-center space-x-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-orange-500 text-neutral-300 hover:text-orange-400 px-8 py-4 rounded-xl font-semibold transition-all duration-300"
-          >
-            <span>View All Projects</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="group-hover:translate-x-1 transition-transform duration-300"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </motion.a>
-        </motion.div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 };
 
