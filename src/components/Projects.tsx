@@ -53,7 +53,7 @@ const projects = [
     description:
       'A backend API for an E-Learning Management System (E-LMS) built with FastAPI and MongoDB, providing endpoints for user management, order tracking and course access.',
     image: 'https://cdn.lnbg.in/projects/lms.jpg',
-    tech: ['FastAPI', 'Reactjs', 'Docker', 'Resend', 'Redis', 'Cloudinary'],
+    tech: ['Elysiajs', 'Reactjs', 'Docker', 'Resend', 'Redis', 'Cloudinary'],
     github: 'https://github.com/bgmanu2426/E-LMS',
   },
 ];
