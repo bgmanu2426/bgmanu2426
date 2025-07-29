@@ -85,21 +85,23 @@ const Hero = () => {
       };
 
   // Simplified glow effect
-  const glowEffect = shouldReduceMotion
-    ? {}
-    : {
-        initial: {
-          filter: 'drop-shadow(0px 0px 0px rgba(249, 115, 22, 0))',
-        },
-        animate: {
-          filter: 'drop-shadow(0px 0px 8px rgba(249, 115, 22, 0.4))',
-          transition: {
+  const glowEffect = {
+    initial: {
+      filter: 'drop-shadow(0px 0px 0px rgba(249, 115, 22, 0))',
+    },
+    animate: {
+      filter: shouldReduceMotion
+        ? 'drop-shadow(0px 0px 0px rgba(249, 115, 22, 0))'
+        : 'drop-shadow(0px 0px 8px rgba(249, 115, 22, 0.4))',
+      transition: shouldReduceMotion
+        ? { duration: 0 }
+        : {
             duration: 3,
             repeat: Infinity,
             repeatType: 'reverse' as const,
           },
-        },
-      };
+    },
+  };
 
   return (
     <section
@@ -141,17 +143,17 @@ const Hero = () => {
               </motion.span>
             </motion.h1>
             <motion.div
-              className="text-3xl text-gray-300 mb-8 leading-relaxed"
+              className="md:text-3xl text-2xl text-gray-300 mb-8 leading-relaxed"
               variants={itemVariants}
             >
               <Suspense fallback={<div className="h-8 bg-gray-700 animate-pulse rounded"></div>}>
                 <Typewriter
                   options={{
                     strings: [
-                      'Full Stack Development',
-                      'Industrial Internet of Things',
-                      'Generative AI',
+                      'IIoT',
                       'Cloud Computing',
+                      'Web Development',
+                      'Generative AI',
                       'AI & ML',
                     ],
                     autoStart: true,
@@ -190,7 +192,7 @@ const Hero = () => {
                 </motion.div>
               </motion.a>
               <motion.a
-                href="https://lnbg.in/resume"
+                href="https://storage.rxresu.me/cm3qleyi710w8dbpoekj62ubo/resumes/resume-portfolio.pdf"
                 className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl font-bold transition-colors text-sm"
                 download
                 initial="initial"
@@ -265,22 +267,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </motion.div>
-
-      {/* Simplified floating code elements with CSS animations */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 text-orange-400/20 text-4xl font-mono animate-bounce delay-300">
-          {'<>'}
-        </div>
-        <div className="absolute top-40 right-20 text-blue-400/20 text-3xl font-mono animate-bounce delay-700">
-          {'{}'}
-        </div>
-        <div className="absolute bottom-40 left-20 text-green-400/20 text-5xl font-mono animate-bounce delay-1000">
-          {'[]'}
-        </div>
-        <div className="absolute bottom-20 right-40 text-purple-400/20 text-2xl font-mono animate-bounce delay-1500">
-          {'()'}
-        </div>
-      </div>
 
       {/* Simplified particles with CSS animations */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">

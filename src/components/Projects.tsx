@@ -45,16 +45,16 @@ const projects = [
       'An AI-powered resume analysis system that evaluates job fit and provides targeted recommendations for career advancement.',
     image: 'https://cdn.lnbg.in/projects/resume-analyzer.png',
     tech: ['HTML5 & CSS3', 'FastAPI', 'Gemini API', 'Docker', 'Redis', 'Resend', 'Azure'],
-    github: 'https://github.com/bgmanu2426/rfid-attendance-system',
+    github: 'https://github.com/bgmanu2426/resume-analyser',
     demo: 'https://dub.sh/resume-analyzer',
   },
   {
     title: "E-LMS Backend API's",
     description:
-      'A comprehensive library management system with a React frontend and FastAPI backend for managing books, users, borrowing records, and reports.',
-    image: 'https://cdn.lnbg.in/projects/rfid-esp32.png',
-    tech: ['PHP', 'ESP32', 'RFID', 'MariaDB', 'Arduino', 'Apache', 'AWS EC2'],
-    github: 'https://github.com/bgmanu2426/rfid-attendance-system',
+      'A backend API for an E-Learning Management System (E-LMS) built with FastAPI and MongoDB, providing endpoints for user management, order tracking and course access.',
+    image: 'https://cdn.lnbg.in/projects/lms.jpg',
+    tech: ['FastAPI', 'Reactjs', 'Docker', 'Resend', 'Redis', 'Cloudinary'],
+    github: 'https://github.com/bgmanu2426/E-LMS',
   },
 ];
 
@@ -172,7 +172,10 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div ref={animationParent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          ref={animationParent}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:mx-0 mx-6"
+        >
           {projects.map((project, index) => (
             <motion.div
               key={project.title}

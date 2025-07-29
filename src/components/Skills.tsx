@@ -14,7 +14,6 @@ import {
   SiTailwindcss,
   SiReact,
   SiFastapi,
-  SiFastify,
   SiDjango,
   SiNodedotjs,
   SiBun,
@@ -26,7 +25,6 @@ import {
   SiGithub,
   SiMysql,
   SiSqlite,
-  SiSqlalchemy,
   SiNeo4J,
   SiRedis,
   SiGooglegemini,
@@ -54,6 +52,11 @@ interface SkillsData {
 }
 
 const skills: SkillsData = {
+  iiot: [
+    { name: 'Arduino', icon: SiArduino, level: 90 },
+    { name: 'Espressif', icon: SiEspressif, level: 80 },
+    { name: 'Raspberry Pi', icon: SiRaspberrypi, level: 70 },
+  ],
   frontend: [
     { name: 'JavaScript', icon: FaJsSquare, level: 90 },
     { name: 'TypeScript', icon: SiTypescript, level: 70 },
@@ -66,7 +69,6 @@ const skills: SkillsData = {
     { name: 'Node.js', icon: SiNodedotjs, level: 90 },
     { name: 'Bun', icon: SiBun, level: 70 },
     { name: 'Express.js', icon: SiExpress, level: 90 },
-    { name: 'Fastify', icon: SiFastify, level: 60 },
     { name: 'Flask', icon: SiFlask, level: 60 },
     { name: 'FastAPI', icon: SiFastapi, level: 90 },
     { name: 'ElysiaJS', icon: ImFirefox, level: 70 },
@@ -83,14 +85,8 @@ const skills: SkillsData = {
     { name: 'MySQL', icon: SiMysql, level: 80 },
     { name: 'PostgreSQL', icon: SiPostgresql, level: 60 },
     { name: 'SQLite', icon: SiSqlite, level: 75 },
-    { name: 'SqlAlchemy', icon: SiSqlalchemy, level: 70 },
     { name: 'Neo4j', icon: SiNeo4J, level: 70 },
     { name: 'Redis', icon: SiRedis, level: 70 },
-  ],
-  iiot: [
-    { name: 'Arduino', icon: SiArduino, level: 90 },
-    { name: 'Espressif', icon: SiEspressif, level: 80 },
-    { name: 'Raspberry Pi', icon: SiRaspberrypi, level: 70 },
   ],
   genai: [
     { name: 'LangChain', icon: SiLangchain, level: 80 },
@@ -113,18 +109,18 @@ interface SkillCategory {
 }
 
 const skillCategories: SkillCategory[] = [
+  { id: 'iiot', name: 'IIoT', icon: SiSmartthings },
   { id: 'frontend', name: 'Frontend', icon: Palette },
   { id: 'backend', name: 'Backend', icon: Server },
   { id: 'database', name: 'Database', icon: Database },
   { id: 'cloud', name: 'Cloud', icon: FaCloud },
-  { id: 'iiot', name: 'IIoT', icon: SiSmartthings },
   { id: 'genai', name: 'GenAI', icon: SiGooglegemini },
   { id: 'tools', name: 'Tools', icon: Code },
 ];
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeSkillCategory, setActiveSkillCategory] = useState('frontend');
+  const [activeSkillCategory, setActiveSkillCategory] = useState('iiot');
 
   // Set up intersection observer to detect when the section is in view
   useEffect(() => {
@@ -255,7 +251,7 @@ const Skills = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSkillCategory}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:mx-10 mx-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
