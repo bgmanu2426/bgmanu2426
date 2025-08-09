@@ -16,18 +16,24 @@ const Hero = () => {
             <div className="text-3xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               <Typewriter
                 options={{
-                  strings: ['Full Stack Developer', 'IoT Engineer', 'AI & ML Enthusiast'],
+                  strings: [
+                    'IIoT',
+                    'Cloud Computing',
+                    'Web Development',
+                    'Generative AI',
+                    'AI & ML',
+                  ],
                   autoStart: true,
                   loop: true,
-                  delay: 75,
-                  deleteSpeed: 50,
+                  delay: 60,
+                  deleteSpeed: 40,
                 }}
               />
             </div>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              A passionate Full Stack Developer, Expert in IIoT and AI enthusiast specialized in
+              A passionate Full Stack Developer, Expert in IIoT and GenAI enthusiast specialized in
               building innovative solutions at the intersection of web development and artificial
-              intelligence.
+              intelligence & machine learning.
             </p>
             <div className="flex space-x-4">
               <a
@@ -38,7 +44,7 @@ const Hero = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </a>
               <a
-                href="https://lnbg.in/resume"
+                href="https://storage.rxresu.me/cm3qleyi710w8dbpoekj62ubo/resumes/resume-portfolio.pdf"
                 className="inline-flex items-center px-4 py-2 bg-blue-600 dark:bg-blue-400 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors text-sm"
                 download
               >

@@ -1,8 +1,8 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
-import Technologies from './components/Technologies';
-import Awards from './components/Awards';
+import Technologies from './components/Skills';
+import Awards from './components/Certifications';
 import Contact from './components/Contact';
 
 function App() {

@@ -6,8 +6,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'admin@lnbg.in',
-    link: 'mailto:admin@lnbg.in',
+    value: 'contact@lnbg.in',
+    link: 'mailto:contact@lnbg.in',
   },
   {
     icon: SiWhatsapp,
@@ -60,7 +60,10 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-16 text-content-light dark:text-content-dark"
         >
-          Get in Touch
+          Get in{' '}
+          <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+            Touch
+          </span>
         </motion.h2>
 
         <div className="max-w-4xl mx-auto">

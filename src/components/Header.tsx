@@ -38,16 +38,16 @@ const Header = () => {
               Projects
             </a>
             <a
-              href="#technologies"
+              href="#skills"
               className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors"
             >
-              Technologies
+              Skills
             </a>
             <a
-              href="#awards"
+              href="#certifications"
               className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors"
             >
-              Awards
+              Certifications
             </a>
             <a
               href="#contact"
@@ -111,35 +111,40 @@ const Header = () => {
               <a
                 href="#about"
                 className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+                onClick={() => setIsMenuOpen(false)}
               >
                 About
               </a>
               <a
                 href="#projects"
                 className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Projects
               </a>
               <a
-                href="#technologies"
+                href="#skills"
                 className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+                onClick={() => setIsMenuOpen(false)}
               >
-                Technologies
+                Skills
               </a>
               <a
-                href="#awards"
+                href="#certifications"
                 className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+                onClick={() => setIsMenuOpen(false)}
               >
-                Awards
+                Certifications
               </a>
               <a
                 href="#contact"
                 className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Contact
               </a>
               <a
-                href="https://lnbg.hashnode.dev/"
+                href="https://blogs.lnbg.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors text-center"
