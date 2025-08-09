@@ -33,6 +33,8 @@ import {
   SiArduino,
   SiSmartthings,
   SiRaspberrypi,
+  SiAffine,
+  SiKicad,
 } from 'react-icons/si';
 import { useRef, useEffect, useState } from 'react';
 import { Code, Database, Palette, Server } from 'lucide-react';
@@ -97,6 +99,8 @@ const skills: SkillsData = {
   tools: [
     { name: 'VS Code', icon: VscVscode, level: 100 },
     { name: 'Git', icon: SiGit, level: 90 },
+    { name: 'KiCad', icon: SiKicad, level: 60 },
+    { name: 'Affine', icon: SiAffine, level: 60 },
   ],
 };
 
@@ -208,7 +212,11 @@ const Skills = () => {
                   initial={{ opacity: 0, y: 20, x: index % 2 === 0 ? 20 : -20 }}
                   whileInView={{ opacity: 1, y: 0, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6, ease: 'easeOut' }}
+                  transition={{
+                    delay: index * 0.1,
+                    duration: 0.6,
+                    ease: 'easeOut',
+                  }}
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
                 >
                   <div className="flex items-center justify-between mb-4">
@@ -217,7 +225,11 @@ const Skills = () => {
                         className="w-10 h-10 flex items-center justify-center rounded-md bg-primary/20 dark:bg-primary-light/20 text-primary dark:text-primary-light"
                         whileHover={{
                           scale: 1.2,
-                          transition: { duration: 0.3, type: 'spring', stiffness: 400 },
+                          transition: {
+                            duration: 0.3,
+                            type: 'spring',
+                            stiffness: 400,
+                          },
                         }}
                       >
                         <skill.icon className="w-5 h-5" />
@@ -235,7 +247,11 @@ const Skills = () => {
                       initial={{ width: '0%' }}
                       animate={{ width: `${skill.level}%` }}
                       key={`${activeSkillCategory}-${skill.name}`}
-                      transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
+                      transition={{
+                        duration: 1,
+                        ease: 'easeOut',
+                        delay: 0.3,
+                      }}
                       className="bg-primary dark:bg-primary-light h-2 rounded-full relative"
                     >
                       {/* Animated shimmer effect */}
