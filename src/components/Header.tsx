@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { SiHashnode } from "react-icons/si";
+import { SiHashnode } from 'react-icons/si';
 import { useDarkMode } from '../hooks/useDarkMode';
 
 const Header = () => {
@@ -21,16 +21,40 @@ const Header = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-2xl font-bold text-content-light dark:text-content-dark"
-          >
-          </motion.a>
+          ></motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors">About</a>
-            <a href="#projects" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors">Projects</a>
-            <a href="#technologies" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors">Technologies</a>
-            <a href="#awards" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors">Awards</a>
-            <a href="#contact" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors">Contact</a>
+            <a
+              href="#about"
+              className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors"
+            >
+              About
+            </a>
+            <a
+              href="#projects"
+              className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors"
+            >
+              Projects
+            </a>
+            <a
+              href="#technologies"
+              className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors"
+            >
+              Technologies
+            </a>
+            <a
+              href="#awards"
+              className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors"
+            >
+              Awards
+            </a>
+            <a
+              href="#contact"
+              className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark transition-colors"
+            >
+              Contact
+            </a>
             <a
               href="https://blogs.lnbg.in/"
               target="_blank"
@@ -71,11 +95,7 @@ const Header = () => {
               className="text-content-light dark:text-content-dark"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -88,11 +108,36 @@ const Header = () => {
             className="md:hidden absolute top-16 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800"
           >
             <div className="flex flex-col space-y-4 px-6 py-4">
-              <a href="#about" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark">About</a>
-              <a href="#projects" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark">Projects</a>
-              <a href="#technologies" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark">Technologies</a>
-              <a href="#awards" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark">Awards</a>
-              <a href="#contact" className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark">Contact</a>
+              <a
+                href="#about"
+                className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+              >
+                About
+              </a>
+              <a
+                href="#projects"
+                className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+              >
+                Projects
+              </a>
+              <a
+                href="#technologies"
+                className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+              >
+                Technologies
+              </a>
+              <a
+                href="#awards"
+                className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+              >
+                Awards
+              </a>
+              <a
+                href="#contact"
+                className="text-content-light/80 dark:text-content-dark/80 hover:text-content-light dark:hover:text-content-dark"
+              >
+                Contact
+              </a>
               <a
                 href="https://lnbg.hashnode.dev/"
                 target="_blank"

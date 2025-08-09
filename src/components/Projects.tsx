@@ -1,31 +1,34 @@
-import { LuExternalLink } from "react-icons/lu";
-import { SiGithub } from "react-icons/si";
+import { LuExternalLink } from 'react-icons/lu';
+import { SiGithub } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const projects = [
   {
     title: 'PlayNex Backend API',
-    description: 'PlayNex is a robust backend for a YouTube-like video streaming application, integrating MongoDB for data persistence and Cloudinary for media management. It provides secure, RESTful API endpoints documented using Swagger for ease of development and testing.',
+    description:
+      'PlayNex is a robust backend for a YouTube-like video streaming application, integrating MongoDB for data persistence and Cloudinary for media management. It provides secure, RESTful API endpoints documented using Swagger for ease of development and testing.',
     image: 'https://cdn.lnbg.in/projects/video-app.avif',
-    tech: ['Node.js', 'Express.js', 'Swagger', "MongoDB", "Cloudinary", "Docker"],
+    tech: ['Node.js', 'Express.js', 'Swagger', 'MongoDB', 'Cloudinary', 'Docker'],
     github: 'https://github.com/bgmanu2426/playnex-backend',
-    demo: 'https://playnex-backend.onrender.com'
+    demo: 'https://playnex-backend.onrender.com',
   },
   {
     title: 'RFID Based Smart Attendance System',
-    description: 'A smart attendance system that uses RFID technology to automate attendance marking for students and staff. The system is built using an ESP32 microcontroller, RFID reader, and a web application for attendance management.',
+    description:
+      'A smart attendance system that uses RFID technology to automate attendance marking for students and staff. The system is built using an ESP32 microcontroller, RFID reader, and a web application for attendance management.',
     image: 'https://cdn.lnbg.in/projects/rfid-app.avif',
-    tech: ['PHP', 'ESP32', 'RFID', 'MariaDB', "Arduino", "Apache", "AWS EC2"],
+    tech: ['PHP', 'ESP32', 'RFID', 'MariaDB', 'Arduino', 'Apache', 'AWS EC2'],
     github: 'https://github.com/bgmanu2426/rfid-attendance-system',
   },
   {
     title: 'FireChatz (Realtime Chat Application)',
-    description: 'FireChatz is a real-time chat application built using React, Firebase, and Socket.io. It allows users to create chat rooms, join existing rooms, and chat with other users in real-time. The application is built using Next.js and Tailwind CSS.',
+    description:
+      'FireChatz is a real-time chat application built using React, Firebase, and Socket.io. It allows users to create chat rooms, join existing rooms, and chat with other users in real-time. The application is built using Next.js and Tailwind CSS.',
     image: 'https://cdn.lnbg.in/projects/chat-app.jpg',
-    tech: ['Reactjs', 'Firebase', 'Nextjs', 'Socket.io', "Tailwind CSS"],
+    tech: ['Reactjs', 'Firebase', 'Nextjs', 'Socket.io', 'Tailwind CSS'],
     github: 'https://github.com/bgmanu2426/FireChatz',
-    demo: 'https://firechatzz.vercel.app'
-  }
+    demo: 'https://firechatzz.vercel.app',
+  },
 ];
 
 const Projects = () => {
@@ -53,16 +56,14 @@ const Projects = () => {
               initial={{ opacity: 0, y: 20, x: index % 2 === 0 ? 20 : -20 }}
               whileInView={{ opacity: 1, y: 0, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
+              transition={{ delay: index * 0.1, duration: 0.6, ease: 'easeOut' }}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-48 object-cover"
-              />
+              <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-content-light dark:text-content-dark">{project.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-content-light dark:text-content-dark">
+                  {project.title}
+                </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech, i) => (

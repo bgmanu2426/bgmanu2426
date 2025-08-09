@@ -1,26 +1,26 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, MessageCircle } from 'lucide-react';
-import { SiGithub, SiLinkedin, SiDiscord, SiWhatsapp } from "react-icons/si";
+import { SiGithub, SiLinkedin, SiDiscord, SiWhatsapp } from 'react-icons/si';
 
 const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
     value: 'admin@lnbg.in',
-    link: 'mailto:admin@lnbg.in'
+    link: 'mailto:admin@lnbg.in',
   },
   {
     icon: SiWhatsapp,
     label: 'WhatsaApp',
     value: '+91 7204000742',
-    link: 'https://lnbg.in/whatsapp'
+    link: 'https://lnbg.in/whatsapp',
   },
   {
     icon: MapPin,
     label: 'Location',
     value: 'Davanagere, Karnataka, India',
-    link: 'https://maps.app.goo.gl/3SVfE3esaqyaiqt99'
-  }
+    link: 'https://maps.app.goo.gl/3SVfE3esaqyaiqt99',
+  },
 ];
 
 const socialLinks = [
@@ -28,20 +28,20 @@ const socialLinks = [
     icon: SiGithub,
     label: 'GitHub',
     value: '@bgmanu2426',
-    link: 'https://lnbg.in/github'
+    link: 'https://lnbg.in/github',
   },
   {
     icon: SiLinkedin,
     label: 'LinkedIn',
     value: '@lnbg7795',
-    link: 'https://lnbg.in/linkedin'
+    link: 'https://lnbg.in/linkedin',
   },
   {
     icon: SiDiscord,
     label: 'Discord',
     value: '@bgmanu',
-    link: 'https://lnbg.in/discord'
-  }
+    link: 'https://lnbg.in/discord',
+  },
 ];
 
 const Contact = () => {
@@ -70,7 +70,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: -20, y: 20 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               className="space-y-8"
             >
               <h3 className="text-2xl font-bold mb-6 text-content-light dark:text-content-dark">
@@ -101,7 +101,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: 20, y: 20 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
               className="space-y-8"
             >
               <h3 className="text-2xl font-bold mb-6 text-content-light dark:text-content-dark">

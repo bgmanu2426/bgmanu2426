@@ -1,54 +1,54 @@
 {
-    "redirects": [
-        {
-            "source": "/github",
-            "destination": "https://github.com/bgmanu2426",
-            "permanent": true
-        },
-        {
-            "source": "/instagram",
-            "destination": "https://www.instagram.com/manu._.bg",
-            "permanent": true
-        },
-        {
-            "source": "/linkedin",
-            "destination": "https://www.linkedin.com/in/lnbg",
-            "permanent": true
-        },
-        {
-            "source": "/whatsapp",
-            "destination": "https://wa.me/917204000742",
-            "permanent": true
-        },
-        {
-            "source": "/discord",
-            "destination": "https://discordapp.com/users/624290824762425353",
-            "permanent": true
-        },
-        {
-            "source": "/resume",
-            "destination": "https://storage.rxresu.me/cm3qleyi710w8dbpoekj62ubo/resumes/my-resume.pdf",
-            "permanent": true
-        },
-        {
-            "source": "/credly",
-            "destination": "https://www.credly.com/users/lnbg",
-            "permanent": true
-        },
-        {
-            "source": "/cloudskillboost",
-            "destination": "https://www.cloudskillsboost.google/public_profiles/3c6183f6-5222-4962-827e-6360eb7bffbd",
-            "permanent": true
-        },
-        {
-            "source": "/google-developer",
-            "destination": "https://g.dev/lnbg",
-            "permanent": true
-        },
-        {
-            "source": "/peerlist",
-            "destination": "https://peerlist.io/bgmanu",
-            "permanent": true
-        }
-    ]
+  "redirects": [
+    {
+      "source": "/github",
+      "destination": "https://github.com/bgmanu2426",
+      "permanent": true
+    },
+    {
+      "source": "/instagram",
+      "destination": "https://www.instagram.com/manu._.bg",
+      "permanent": true
+    },
+    {
+      "source": "/linkedin",
+      "destination": "https://www.linkedin.com/in/lnbg",
+      "permanent": true
+    },
+    {
+      "source": "/whatsapp",
+      "destination": "https://wa.me/917204000742",
+      "permanent": true
+    },
+    {
+      "source": "/discord",
+      "destination": "https://discordapp.com/users/624290824762425353",
+      "permanent": true
+    },
+    {
+      "source": "/resume",
+      "destination": "https://storage.rxresu.me/cm3qleyi710w8dbpoekj62ubo/resumes/my-resume.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/credly",
+      "destination": "https://www.credly.com/users/lnbg",
+      "permanent": true
+    },
+    {
+      "source": "/cloudskillboost",
+      "destination": "https://www.cloudskillsboost.google/public_profiles/3c6183f6-5222-4962-827e-6360eb7bffbd",
+      "permanent": true
+    },
+    {
+      "source": "/google-developer",
+      "destination": "https://g.dev/lnbg",
+      "permanent": true
+    },
+    {
+      "source": "/peerlist",
+      "destination": "https://peerlist.io/bgmanu",
+      "permanent": true
+    }
+  ]
 }
