@@ -9,6 +9,11 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://lnbg.in/linkedin)
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://lnbg.in/instagram)
 
+## 🏆 Achivements
+
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=bgmanu2426&theme=dracula" alt="bgmanu2426" /></a> </p>
+
+
 ## 📈 GitHub Stats
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=bgmanu2426&show_icons=true&theme=radical)
