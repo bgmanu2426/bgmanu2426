@@ -24,7 +24,7 @@
 ![GitHub Contributions](https://github-readme-streak-stats.herokuapp.com/?user=bgmanu2426&theme=radical&date_format=j%20M%5B%20Y%5D)
 
 ### 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username=hardiksehgal2&limit=5&theme=dark&combine_all_yearly_contributions=true)
+![](https://github-contributor-stats.vercel.app/api?username=bgmanu2426&limit=5&theme=dark&combine_all_yearly_contributions=true)
 
 ---
 [![](https://visitcount.itsvg.in/api?id=hardiksehgal2&icon=0&color=0)](https://visitcount.itsvg.in)
@@ -39,9 +39,3 @@
 ## ✍️ Blog Posts
 
 - Click here to read my blogs [https://blogs.lnbg.in/](https://blogs.lnbg.in/)
-
-## 🌟 Support
-
-If you like my work, consider buying me a coffee!
-
-## Sry i dont have `Buy me a coffee` button here, better meet me in-person and buy me a coffee 😁😅...
